@@ -1,0 +1,7 @@
+Monad Autograder
+Testing lab_intro at 2014-09-01 02:04:11
+
+"If debugging is the process of removing bugs, then programming must be the process of putting them in." ~ Edsger W. Dijkstra
+
+Setting up test environment...
+Error: /dev/shm/grading/svn_checkout/sofroni2/lab_intro/rgbapixel.cpp does not exist.
