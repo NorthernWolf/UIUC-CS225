@@ -19,7 +19,7 @@ class RGBAPixel{
 
 
 	RGBAPixel(); //constructor
-	RGBAPixel(uint8_t red, uint8_t blue, uint8_t green);
+	RGBAPixel(uint8_t Nred, uint8_t Nblue, uint8_t Ngreen);
 
 
 
