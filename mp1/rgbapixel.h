@@ -13,7 +13,7 @@ class RGBAPixel{
 
 
 	RGBAPixel(); //constructor
-	RGBAPixel(uint8_t Nred, uint8_t Nblue, uint8_t Ngreen);
+	RGBAPixel(uint8_t newRed, uint8_t newBlue, uint8_t newGreen);
 
 
 	//members:
@@ -21,10 +21,6 @@ class RGBAPixel{
 	uint8_t green;
 	uint8_t blue;
 	uint8_t alpha;
-
-
-	
-
 
 };
 
