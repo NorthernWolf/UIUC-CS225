@@ -51,7 +51,7 @@ cout<< "why am i getting an error on the autorgrader test 2"<< endl;
 			*outputimage.operator()(inputimage.width() -1 -i, inputimage.height()-1-j) = *inputimage.operator()(i,j);
 			//
 			//above line of code sets each point in outputimage to be the exact opposite of that in inputimage
-			//we need the -1 becasue we start for loop at zero and go to the maximum value so we'd be doing one more than the max value
+			//we need the -1 becasue we start for loop at zero and go to the maximum value (256) so we'd be doing one more than the max value
 			//.. can't start for loops at 1 becasue image starts at zero!
 		}
 

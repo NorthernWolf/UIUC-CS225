@@ -1,7 +1,7 @@
 #ifndef RGBAPIXEL_H
 #define RGBAPIXEL_H
 #include <cstdint>
-#include <ostream>
+#include <iostream>
 
 
 using std::uint8_t;
