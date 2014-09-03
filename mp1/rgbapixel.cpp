@@ -9,11 +9,11 @@ RGBAPixel::RGBAPixel() //constructor (using scope thing)
 	alpha = 255;
 }
 
-RGBAPixel::RGBAPixel(uint8_t newRed, uint8_t newBlue, uint8_t newGreen)
+RGBAPixel::RGBAPixel(uint8_t red, uint8_t blue, uint8_t blue)
 {
-	red = newRed;
-	blue = newBlue;
-	green = newGreen;
+	red = red;
+	blue = blue;
+	green = green;
 	alpha = 255;
 }
 
