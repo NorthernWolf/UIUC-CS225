@@ -25,7 +25,7 @@ int j;//initialize j
 cout<< "width is: " << inputimage.width()<< endl; //tests to make sure everything is working
 cout<< "height is: " << inputimage.height()<< endl ;
 cout<< "had to change i and j to just int from uint8_t for it to work"<< endl;
-
+cout<< "why am i getting an error on the autorgrader test 2"<< endl;
 
 	for(i = 0; i < inputimage.width() ; i++ ) //go through every pixel along the x axis 
 	{
