@@ -42,6 +42,12 @@ class Allocator
          */
         void printRooms();
 
+		~Allocator(); //defining destructor
+
+		
+		
+
+
 	private:
 
         /**
@@ -92,6 +98,8 @@ class Allocator
 
         /** Total number of available seats across all rooms */
         int totalCapacity;
+
+		void clear();//clear function definition
 };
 
 #endif

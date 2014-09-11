@@ -53,7 +53,7 @@ Room::~Room()
  */
 void Room::addLetter(const Letter & L)
 {
-	letters[letterCount++] = L;
+	letters [letterCount++] = L;
 	count += L.count;
 }
 
@@ -83,7 +83,7 @@ void Room::print()
 void Room::clear()
 {
 	if (letters != NULL)
-		delete letters;
+		delete [] letters; //needed to include the brackets becasue letters is an array!
 }
 
 /**
@@ -95,6 +95,11 @@ void Room::copy(const Room & other)
 	capacity    = other.capacity;
 	count       = other.count;
 	letterCount = other.letterCount;
-	letters     = other.letters;
+	max_letters = other.max_letters;
+	letters = new Letter[max_letters]; //making a "deep" copy into our new array
+		for(int i=0;i<max_letters;i++) //copy each though each element of the array
+		{
+			letters[i] = other.letters[i]; //actually making the copy
+		}
 }
 
