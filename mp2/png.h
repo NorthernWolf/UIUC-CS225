@@ -32,9 +32,13 @@ using std::stringstream;
 /**
  * Represents an entire png formatted image.
  */
+
+
+
+
 class PNG
 {
-    public:
+	public:
         /**
          * Creates a default PNG image (that is, a 1x1 opaque white image).
          */
