@@ -20,7 +20,10 @@ int main()
 
 	/* TODO: Why can't I construct a new Truck?  Is should be a valid Drawable.
 	 * Could it be missing something that would prevent it from being constructed?
-	 */
+	 */ 
+
+		//thinks truck is abstract?
+
 	Drawable* truck = new Truck(truck_center);
 
 	truck->draw(&canvas);

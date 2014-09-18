@@ -95,6 +95,21 @@ Vector2 Truck::center() const
 	return this->center_;
 }
 
+void Truck::draw(PNG* canvas) const //adding this thing
+{
+
+	//dont need & infront of canvale becasue PNG * in function definition
+//just like example from beginning of lab 
+	trailer -> draw(canvas); //draw trailer
+	cabin -> draw(canvas);//draw cabin
+	window -> draw(canvas);//draw window
+	engine->draw(canvas);//draw engine
+	for (int i = 0; i < NUM_WHEELS; i++)
+	{
+		wheels[i] ->draw(canvas); //populate wheels array
+	}
+}
+
 void Truck::set_center(const Vector2& pcenter)
 {
 	const Vector2 delta(this->center_ - pcenter);
