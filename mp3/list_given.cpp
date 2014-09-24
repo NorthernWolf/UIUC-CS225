@@ -11,6 +11,12 @@
  */
 
 // These are given functions---you do not need to (and should not!) modify them
+#include <iostream>
+
+using namespace std;
+
+
+
 
 template <class T>
 List<T>::List()
@@ -24,7 +30,7 @@ int List<T>::size() const
 }
 
 template <class T>
-List<T>::List(List<T> const & other)
+List<T>::List(List<T> const & other) //is this the copy constructor?
 {
 	copy(other);
 }

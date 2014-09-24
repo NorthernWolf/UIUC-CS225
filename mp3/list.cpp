@@ -14,11 +14,37 @@
  * Destroys the current List. This function should ensure that
  * memory does not leak on destruction of a list.
  */
+
+#include <iostream>
+
+using namespace std;
+
 template <class T>
 List<T>::~List()
 {
     /// @todo Graded in MP3.1
+    clear();//call the clear function
 }
+
+
+//note to self about copy constructor and assignment operator: 
+//assignment operator copies to existing functions, and the copy 
+//constructor copies to to newly created objects
+//if a new object has to be created before the copying can occur, the copy consturctor is used.
+//if a new object DOES NOT have to be created before the copying can occur, the assignment operator
+//is used.  
+
+//3 cases to use copy constructor:
+//1) when instantiation one object and initializing it with values from another object
+// instantiating is the process by which the compiler determines that a particular
+//template is used with a particular set of arguments and performs argument substitution on 
+//the template to generate the class or function to compile
+//2)when passing an object by value
+//3)when an object is returned from an function by value
+
+
+
+
 
 /**
  * Destroys all dynamically allocated memory associated with the current
@@ -28,6 +54,20 @@ template <class T>
 void List<T>::clear()
 {
     /// @todo Graded in MP3.1
+    //make a while loop and go through every part of the linked list
+    //then set head and tail = NULL
+    ListNode * t = new ListNode;//making temp pointer T like in tutorial
+    
+    if(head != NULL) //until head is not zero
+    {
+        t = head -> next; //set T equal to the link of head
+        delete head;//delete the head
+        head = t;//set new head
+    }
+        head = NULL;// set head and tail pointers NULL since linked list is gone
+        tail = NULL;
+        length = 0;//also length of list is now zero
+        t = NULL;//set temp pointer equal to null (point to garbage)
 }
 
 /**
@@ -40,6 +80,12 @@ template <class T>
 void List<T>::insertFront(T const & ndata)
 {
     /// @todo Graded in MP3.1
+    //using head and data as defined in list.h
+    ListNode * newHead = new ListNode;//make a new node to add to the front
+    newHead->data = ndata;//set the link of the new node we created equal to ndata
+    // (ndata is function argument and thing were adding)
+    newHead->next = head;//set the pointer of new node to original head
+    head = newHead;//set the new head of the linked list to the newHead node
 }
 
 /**
@@ -52,6 +98,10 @@ template <class T>
 void List<T>::insertBack( const T & ndata )
 {
     /// @todo Graded in MP3.1
+
+    
+
+    
 }
 
 
