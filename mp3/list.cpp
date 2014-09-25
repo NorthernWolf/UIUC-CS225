@@ -25,27 +25,6 @@ List<T>::~List()
     /// @todo Graded in MP3.1
     clear();//call the clear function
 }
-
-
-//note to self about copy constructor and assignment operator: 
-//assignment operator copies to existing functions, and the copy 
-//constructor copies to to newly created objects
-//if a new object has to be created before the copying can occur, the copy consturctor is used.
-//if a new object DOES NOT have to be created before the copying can occur, the assignment operator
-//is used.  
-
-//3 cases to use copy constructor:
-//1) when instantiation one object and initializing it with values from another object
-// instantiating is the process by which the compiler determines that a particular
-//template is used with a particular set of arguments and performs argument substitution on 
-//the template to generate the class or function to compile
-//2)when passing an object by value
-//3)when an object is returned from an function by value
-
-
-
-
-
 /**
  * Destroys all dynamically allocated memory associated with the current
  * List class.
@@ -53,12 +32,12 @@ List<T>::~List()
 template <class T>
 void List<T>::clear()
 {
-    /// @todo Graded in MP3.1
+    
     //make a while loop and go through every part of the linked list
     //then set head and tail = NULL
-    ListNode * t = new ListNode;//making temp pointer T like in tutorial
+    ListNode * t;//making temp pointer T like in tutorial
     
-    if(head != NULL) //until head is not zero
+    while(head != NULL) //until head is not zero
     {
         t = head -> next; //set T equal to the link of head
         delete head;//delete the head
@@ -79,13 +58,32 @@ void List<T>::clear()
 template <class T>
 void List<T>::insertFront(T const & ndata)
 {
-    /// @todo Graded in MP3.1
+    
+    ListNode * newHead = new ListNode(ndata);//make a new node to add to the front and give it ndata
+
+    if(head != NULL)//when list isn't empty
+    {
     //using head and data as defined in list.h
-    ListNode * newHead = new ListNode;//make a new node to add to the front
-    newHead->data = ndata;//set the link of the new node we created equal to ndata
+    //set the link of the new node we created equal to ndata
     // (ndata is function argument and thing were adding)
     newHead->next = head;//set the pointer of new node to original head
+    newHead->prev = NULL;//set the previous pointer to NULL
     head = newHead;//set the new head of the linked list to the newHead node
+    }
+    else if (head == NULL || tail == NULL)//list is empty
+    {
+        head = newHead;//new node is the head
+        tail = newHead;//new node is the tail
+        head->prev = NULL;//points to null
+        head->next = NULL;//points to null
+        tail->next = head->next;//there's one node
+        tail->prev = head->prev;//so the head and tail prev and next pointers are the same. i.e. NULL
+    }
+   
+    length = length+1;//increment length
+    newHead = NULL; //free the memory!
+
+
 }
 
 /**
@@ -97,10 +95,27 @@ void List<T>::insertFront(T const & ndata)
 template <class T>
 void List<T>::insertBack( const T & ndata )
 {
-    /// @todo Graded in MP3.1
+    ListNode * newTail = new ListNode(ndata);//make our new node and give it data ndata
 
-    
+    if(head != NULL)
+    {    
+    newTail->next = NULL;//set its next pointer to null
+    tail->next = newTail;//set old tail pointer to newTail
+    newTail->prev = tail;//set the back pointer of new tail to point to tail
+    tail = newTail;//newTail is now tail
+    }
+    else if (head == NULL || tail == NULL)
+    {
+        head = newTail;//new node is the head
+        tail = newTail;//new node is the tail
+        head->prev = NULL;//points to null
+        head->next = NULL;//points to null
+        tail->next = head->next;//there's one node
+        tail->prev = head->prev;//so the head and tail prev and next pointers are the same. i.e. NULL
+    }
 
+    length = length +1;//incrememnt the length
+    newTail = NULL; //free the memory
     
 }
 
@@ -128,7 +143,29 @@ void List<T>::reverse()
 template <class T>
 void List<T>::reverse( ListNode * & startPoint, ListNode * & endPoint )
 {
-    /// @todo Graded in MP3.1
+  
+    ListNode * currentThing = startPoint;//define a pointer to point to stuff
+    while(currentThing != NULL)
+    {
+        //just doing a basic swap here
+        //made a temporary thing called holder for the swap
+        //then swapped currentThing->prev and currentThing->next
+        ListNode * holder = currentThing->next;
+        //cout<<endPoint<<endl;
+        currentThing->next = currentThing->prev;
+        currentThing->prev = holder;
+        //traverse list
+        currentThing = currentThing->prev;
+    }
+    //update new start and end points
+    //using a swap again
+    ListNode * otherHolder = startPoint;
+    startPoint = endPoint;
+    endPoint = otherHolder;
+
+    
+
+   
 }
 
 
