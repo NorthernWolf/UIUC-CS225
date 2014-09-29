@@ -148,7 +148,7 @@ typename List<T>::ListNode* List<T>::reverse( ListNode * curr, ListNode * prev, 
     ListNode * temp;
 
     
-    if (len <= 1)//only change
+    if (len == 1)//only change
     {
         
         curr->next = prev;
