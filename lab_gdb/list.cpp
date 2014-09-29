@@ -185,19 +185,20 @@ void List<T>::shuffle()
         // interleave
          while (two != NULL)
         {
+            prev = two->next;
             temp = one->next;
             one->next = two;
-            two = two->next;
-            one->next->next = temp;
+            two->next = temp;
             one = temp; //added this line
+            two = prev; //aded this line
         }
     }
     else if(length%2 == 1)//if list length is odd
     {
     
-        for (int i = 0; i < length/2; i++)
+        for (int i = 0; i < (length+1)/2; i++)
         {
-            prev = prev->next; //small difference here for case that is odd length
+            prev = two; //small difference here for case that is odd length
             two = two->next;
         }
         prev->next = NULL;
@@ -206,10 +207,11 @@ void List<T>::shuffle()
         while (two != NULL)
         {
             temp = one->next;
+            prev = two->next;
+            two->next = temp;
             one->next = two;
-            two = two->next;
-            one->next->next = temp;
-            one = temp; //added this line
+            one = temp; 
+            two = prev; 
         }
      }       
 }

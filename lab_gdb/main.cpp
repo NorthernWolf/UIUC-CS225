@@ -101,7 +101,7 @@ void testShuffle()
 	cout << "[main]: " << __func__ << "()" << endl;
 
     List<int> list;
-	for (int i = 10; i > 0; i--)
+	for (int i = 5; i > 0; i--)
 		list.insertFront(i);
     cout << "[testShuffle]: before " << list << endl;
     list.shuffle();
