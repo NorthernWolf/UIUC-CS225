@@ -32,6 +32,21 @@ void List<T>::clear()
 {
     // @todo Graded in lab_gdb
     // Write this function based on mp3
+   //make a while loop and go through every part of the linked list
+    //then set head and tail = NULL
+   ListNode * t;
+    
+    while(head != NULL) //until head is not zero
+    {
+        t = head -> next; //set T equal to the link of head
+        delete head;//delete the head
+        head = t;//set new head
+    }
+        head = NULL;// set head and tail pointers NULL since linked list is gone
+        length = 0;//also length of list is now zero
+        t = NULL;//set temp pointer equal to null (point to garbage)
+
+
 }
 
 /**
@@ -45,6 +60,29 @@ void List<T>::insertFront(T const & ndata)
 {
     // @todo Graded in lab_gdb
     // Write this function based on mp3
+    ListNode * newHead = new ListNode(ndata);//make a new node to add to the front and give it ndata
+
+    if(head != NULL)//when list isn't empty
+    {
+    //using head and data as defined in list.h
+    //set the link of the new node we created equal to ndata
+    // (ndata is function argument and thing were adding)
+    newHead->next = head;//set the pointer of new node to original head
+    head = newHead;//set the new head of the linked list to the newHead node
+    }
+    else if (head == NULL)//list is empty
+    {
+        head = newHead;//new node is the head
+       
+        head->next = NULL;//points to null
+        
+    }
+   
+    length = length+1;//increment length
+    newHead = NULL; //free the memory!
+
+
+
 }
 
 /**
@@ -60,7 +98,7 @@ void List<T>::insertBack( const T & ndata )
     // NOTE: Do not use this implementation for MP3!
     ListNode * temp = head;
 
-    if (temp == NULL)
+    if(temp == NULL)
     {
         head = new ListNode(ndata);
     }
@@ -68,9 +106,10 @@ void List<T>::insertBack( const T & ndata )
     {
         while (temp->next != NULL)
             temp = temp->next;
-        temp = new ListNode(ndata);
-        length++;
+        temp->next = new ListNode(ndata);//changed temp to temp->next
+       
     }
+     length++;
 }
 
 
@@ -97,7 +136,7 @@ typename List<T>::ListNode* List<T>::reverse( ListNode * curr, ListNode * prev, 
 {
     // @todo Graded in lab_gdb
     ListNode * temp;
-    if (len <= 0)
+    if (len == 1)//only change
     {
         curr->next = prev;
         return curr;
@@ -129,21 +168,50 @@ void List<T>::shuffle()
     ListNode * one, * two, * prev, * temp;
     one = two = prev = temp = head;
 
-    for (int i = 0; i < length/2; i++)
+    if(head==NULL)//if the list is empty don't do anything
     {
-        prev = two;
-        two = two->next;
+        return;  
     }
-    prev->next = NULL;
+    else if(length%2 == 0) //if list length is even
+    {
 
-    // interleave
-    while (two != NULL)
-    {
-        temp = one->next;
-        one->next = two;
-        two = two->next;
-        one->next->next = temp;
+        for (int i = 0; i < length/2; i++)
+        {
+             prev = two;
+             two = two->next;
+        }
+        prev->next = NULL;
+
+        // interleave
+         while (two != NULL)
+        {
+            temp = one->next;
+            one->next = two;
+            two = two->next;
+            one->next->next = temp;
+            one = temp; //added this line
+        }
     }
+    else if(length%2 == 1)//if list length is odd
+    {
+    
+        for (int i = 0; i < length/2; i++)
+        {
+            prev = prev->next; //small difference here for case that is odd length
+            two = two->next;
+        }
+        prev->next = NULL;
+
+        // interleave
+        while (two != NULL)
+        {
+            temp = one->next;
+            one->next = two;
+            two = two->next;
+            one->next->next = temp;
+            one = temp; //added this line
+        }
+     }       
 }
 
 
