@@ -35,6 +35,11 @@ void List<T>::clear()
    //make a while loop and go through every part of the linked list
     //then set head and tail = NULL
    ListNode * t;
+
+   if(head==NULL)
+   {
+        return;
+   }
     
     while(head != NULL) //until head is not zero
     {
@@ -119,7 +124,12 @@ void List<T>::insertBack( const T & ndata )
 template <class T>
 void List<T>::reverse()
 {
-    head = reverse(head, NULL, length);
+    if(head==NULL)
+    {
+       return;
+    }
+    else 
+        head = reverse(head, NULL, length);
 }
 
 /**
@@ -136,8 +146,11 @@ typename List<T>::ListNode* List<T>::reverse( ListNode * curr, ListNode * prev, 
 {
     // @todo Graded in lab_gdb
     ListNode * temp;
-    if (len == 1)//only change
+
+    
+    if (len <= 1)//only change
     {
+        
         curr->next = prev;
         return curr;
     }
