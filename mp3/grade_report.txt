@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp3 at 2014-09-30 12:13:58
+Testing mp3 at 2014-10-01 02:22:28
 
-"We are what we repeatedly do. Excellence, then, is not an act, but a habit." ~ Aristotle
+"I love deadlines. I like the whooshing sound they make as they fly by." ~ Douglas Adams
 
 Setting up test environment...
 Compiling...
