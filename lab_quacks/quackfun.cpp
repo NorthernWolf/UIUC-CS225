@@ -23,11 +23,36 @@
 template <typename T>
 T QuackFun::sum(stack<T> & s)
 {
-    // Your code here
-    return T(); // stub return value (0 for primitive types). Change this!
-                // Note: T() is the default value for objects, and 0 for
-                // primitive types
+    
+    T temp; //my two local variables of type T
+    T stackSum=0; //my two local variables of type T
+
+    //base case first
+    if(s.empty()){
+        return T(); //base case
+    }
+    else{
+
+
+        stackSum +=s.top();
+        temp = s.top();
+        s.pop();
+        stackSum +=sum(s);
+        
+
+        s.push(temp);//restore temp
+
+        return stackSum;
+
+
+    }
+
+
 }
+
+
+
+   
 
 /**
  * Reverses even sized blocks of items in the queue. Blocks start at size
@@ -44,10 +69,70 @@ template <typename T>
 void QuackFun::scramble(queue<T> & q)
 {
     stack<T> s;
-    // optional: queue<T> q2;
+    queue<T> q2; //def using that 
+    int block = 1;
 
-    // Your code here
+    //for even blocks load it into the stack and then pop it off the stack into the que (so they'll reverse)
+    //for odd blocks, just load them into the que so they go in the right order
+    //q2 is gonna hold the scrambled list
+
+    if(q.empty()){
+        return;
+    }
+    else if(!q.empty())
+    {
+        while(!q.empty())
+        {
+
+
+            if(block % 2 ==0)
+            {
+             //were on an even block so flip this thing
+                for(int j= 0;j<block;j++)
+                {
+                    if(!q.empty())
+                    {
+                    s.push(q.front());
+                    q.pop();
+                    }   
+                }
+
+                while(!s.empty())
+                {
+                    q2.push(s.top());
+                    q.pop();
+                }
+            }
+            else if (block%2==1)//odd block so don't flip
+            {
+                
+
+               
+                
+                for(int k=0;k<block;k++)
+                {
+
+                    if(!q.empty())
+                    {
+                    q2.push(q.front());
+                    q.pop();
+                    }
+                }
+                
+
+            }
+
+
+
+        block++;
+        }
+
+    }
+q=q2;
+    
 }
+    // Your code here
+
 
 /**
  * @return true if the parameter stack and queue contain only elements of exactly

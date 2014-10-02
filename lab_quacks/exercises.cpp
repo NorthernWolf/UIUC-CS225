@@ -21,7 +21,15 @@
  */
 int RecursionExercises::sumDigits(int n)
 {
-    return -1;
+    if(n==0){
+
+    	return 0; //base case!
+    }
+    else
+    	 return sumDigits(n/10)+  n%10;
+    	 //n%10 gives the right most digit and n/10 cuts if off so add the two and were good to go!
+
+    
 }
 
 /**
@@ -34,5 +42,12 @@ int RecursionExercises::sumDigits(int n)
  */
 int RecursionExercises::triangle(int rows)
 {
-    return -1;
+   //base case first
+	if(rows ==0){
+		return 0;	//thats the base case
+	}
+	else
+		return triangle(rows-1)+rows;
+
+	
 }
