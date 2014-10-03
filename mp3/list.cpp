@@ -144,12 +144,17 @@ template <class T>
 void List<T>::reverse( ListNode * & startPoint, ListNode * & endPoint )
 {
   
-    ListNode * currentThing = startPoint;//define a pointer to point to stuff
 
+
+    if(startPoint ==NULL || endPoint== NULL)
+        return;
+
+    ListNode * currentThing = startPoint;//define a pointer to point to stuff
+    ListNode * whereToStop = endPoint->next;
     //ListNode * origEndPointNext = endPoint->next;
     //ListNode * origStartPointPrev = startPoint->prev;
 
-    while(currentThing != NULL)
+    while(currentThing != whereToStop)
     {
 
         //just doing a basic swap here
@@ -161,41 +166,23 @@ void List<T>::reverse( ListNode * & startPoint, ListNode * & endPoint )
         currentThing->prev = holder;
         //traverse list
         currentThing = currentThing->prev;
-    }
-    
+    }  
 
-        //special case conditions
-        if(endPoint->next != NULL || startPoint->prev !=NULL) //if were reversing say in the middle of a list
-        {    
-            endPoint->prev = startPoint->prev;
-            startPoint->next = endPoint->next;
-        }
-        else if(endPoint->next ==NULL) //reversing at end of list
-        {
-            startPoint->next = NULL;
-            endPoint->prev = startPoint->prev;
-
-        }
-        else if(startPoint->prev==NULL) //reversing at beginning of list
-        {
-            endPoint->prev = NULL;
-            startPoint->next = endPoint->next;
-        }
-        
-
-
-
-       
     //update new start and end points
     //using a swap again
     ListNode * otherHolder = startPoint;
     startPoint = endPoint;
     endPoint = otherHolder;
 
+    //special case conditions... causing the program to have some issues
 
+  
     
-
-   
+    ListNode *holder1 = startPoint->prev;
+    startPoint->prev = endPoint->next;
+    endPoint->next = holder1; 
+    
+  
 }
 
 
@@ -233,6 +220,8 @@ void List<T>::reverseNth( int n )
         ListNode * newStartPoint = head;//new start point will always be at head
         ListNode * newendPoint= NULL;
         ListNode * traversePointer = head; //start our traverse pointer at the head
+        ListNode * tempHead = NULL; 
+        
 
         //ListNode * endnext = head;
         while(traversePointer!= NULL)//keep going until out traverse pointer hits the end
@@ -242,33 +231,28 @@ void List<T>::reverseNth( int n )
             for(int i=1 ; i<n ; i++) //keep traversing until nth element
             {
                 
-                   if(traversePointer!= NULL)
+                   if(traversePointer->next!= NULL)
                    {
                     //traverse list until we get to nth element
                     traversePointer = traversePointer->next;//traverse list until we get to nth element 
                     //cout<<"inside for loop"<<endl;
                     }
-                   
-            }
             
-
-            head = traversePointer;
+            }
+            tempHead = traversePointer;
+            
             
             reverse(newStartPoint, traversePointer);//call the actual reverse function
-            newendPoint = traversePointer;
-            newStartPoint = traversePointer->next;
-            traversePointer = traversePointer->next;
-            tail = newendPoint;
-             
-        
-        
-            
-            
-            //cout<<"HI"<<endl;
-            //tail = newendPoint;
+            tempHead = traversePointer;
+            newStartPoint = traversePointer->next;//next chunk starts at transverse pointer next
+            traversePointer = traversePointer->next;//move transverse pointer along
+            newendPoint = traversePointer;//new endpoint is gonna be where transverse pointer stops
+             //the new tail is gonna hold the value of transverse pointer
+            //still need to set the new head?
            
 
-        }       
+        }  
+        tail = newendPoint;     
     }
 }
 
@@ -324,21 +308,6 @@ void List<T>::waterfall()
             }
                  
             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
 
@@ -474,7 +443,74 @@ template <class T>
 typename List<T>::ListNode * List<T>::merge(ListNode * first, ListNode * second)
 {
     /// @todo Graded in MP3.2
-    return NULL; // change me!
+    //return NULL; // change me!
+
+
+    ListNode * list1 = first;
+    ListNode * list2 = second;
+    ListNode * sortedList = NULL;
+    ListNode * minHolder = NULL;
+
+        //check if lists are empty????
+        if(list1 == NULL)
+            return list2;
+        else if(list2==NULL)
+            return list1;
+
+        //compare the values and then increment the pointers
+        if(list2->data < list1->data)
+        {
+            minHolder = list2;//set min holder to smallest data
+            list2 = list2->next; //increment pointer
+
+        }
+        else //if(list1->data < list2->data)
+        {
+            minHolder = list1;//set min holder to smallest data
+            list1 = list1->next; //increment pointer
+            
+        }
+ /*       else if(list1->data == list2->data)
+        {
+            //if they're equal basically don't do anything just move to next elements of list
+            list1 = list1->next; //increment pointer
+            list2 = list2->next; //increment pointer
+        }
+*/
+
+        //this will find the min value of the two lists
+        //set sortedList =  minHolder; so that the first node is the smallest element
+        sortedList = minHolder;
+        //now lets get to work checking the rest!
+    while(list1 != NULL && list2 !=NULL)
+    {
+        if(list1->data < list2->data)
+        {
+            minHolder->next = list1;//set next thing in list to be the next smallest element
+            list1 = list1->next; //increment pointer
+        }
+        else //if(list2->data < list1->data)
+        {
+            minHolder->next =list2;//set next thing in list to be the next smallest element
+            list2 = list2->next; //increment pointer
+
+        }
+        minHolder = minHolder->next;//increment minholder
+    }
+    if(list1 != NULL)
+    {
+        minHolder->next = list1;
+    }
+    if(list2 != NULL)
+    {
+        minHolder->next = list2;
+    }
+
+
+
+    return sortedList;//returns the sorted list
+
+
 }
 
 /**
@@ -504,5 +540,23 @@ template <class T>
 typename List<T>::ListNode * List<T>::mergesort(ListNode * start, int chainLength)
 {
     /// @todo Graded in MP3.2
-    return NULL; // change me!
+    //return NULL; // change me!
+
+   //base case: length = 1
+    if(chainLength ==1)
+    {
+        return;
+    }
+    else
+        int midpoint = chainLength/2;//find the midpoint
+        split(midpoint);//split the list into two lists
+        mergesort()
+
+
+
+    ListNode * list1 = NULL;
+    ListNode * list2 = NULL;
+
+    return merge(list1, list2); //return the two lists merged
+
 }
