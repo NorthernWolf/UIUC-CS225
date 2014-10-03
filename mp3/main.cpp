@@ -5,6 +5,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+                                                              \
+//#include "proxy.h"
+
 
 using namespace std;
 
@@ -77,11 +80,51 @@ void testInserts()
 	cout << "[testInserts]: size: " << list2.size() << endl;
 	if (list2.size() != 10)
 		cout << "[testInserts]: Incorrect size" << endl;
+
+	
+	List<int> list3;
+
+	// test insertFront
+	for (size_t i = 1; i <= 37; i++)
+		list3.insertFront(i);
+
+	cout << "[testInserts]: " << list3 << endl;
+	cout << "[testInserts]: size: " << list3.size() << endl;
+	if (list3.size() != 37)
+		cout << "[testInserts]: Incorrect size" << endl;
+	/*list3.reverse();
+	cout << "[testInserts]: " << list3 << endl;
+	cout << "[testInserts]: size: " << list3.size() << endl;
+	if (list3.size() != 37)
+		cout << "[testInserts]: Incorrect size" << endl;
+*/
+	/*list2.reverseNth(3);
+
+	cout << "[testReverseNth]: " << list2 << endl;
+	cout << "[testReverseNth]: size: " << list2.size() << endl;
+	if (list2.size() != 10)
+		cout << "[testReverseNth]: Incorrect size" << endl;*/
+
 }
+/*
+VALGRIND_TEST(testDestructor37, 10, 10, 2000)
+{
+	List<int> list;
+	vector<int> soln;
+	for (int i = 0; i < 37; i++)
+	{
+		list.insertFront(i);
+		soln.push_back(37 - i - 1);
+	}
+	assertListEquals(list, soln, CHECK_ALL);
+}
+*/
+
 
 
 void testReverse()
 {
+	/*
 	cout << "[main]: " << __func__ << "()" << endl;
 	PNG in("in_02.png");
 
@@ -92,10 +135,29 @@ void testReverse()
 	out.writeToFile("reverse.png");
 
 	checkSoln(__func__, out, "soln_reverse.png");
+	*/
+	//number test for reverse
+	cout << "[main]: " << __func__ << "()" << endl;
+	List<int> list;
+
+	// test insertFront
+	for (size_t i = 1; i <= 10; i++)
+		list.insertBack(i);
+	list.reverse();
+	cout << "[testInserts]: " << list << endl;
+	cout << "[testInserts]: size: " << list.size() << endl;
+	if (list.size() != 10)
+		cout << "[testInserts]: Incorrect size" << endl;
+
+
+
+
+
 }
 
 void testReverseNth()
 {
+
 	cout << "[main]: " << __func__ << "()" << endl;
 	PNG in("in_03.png");
 	
@@ -114,6 +176,21 @@ void testReverseNth()
 	out.writeToFile("reverseNth_02.png");
 
 	checkSoln(__func__, out, "soln_reverseNth_02.png");
+/*
+
+	//number test for reverse nth
+	cout << "[main]: " << __func__ << "()" << endl;
+	List<int> list;
+
+	// test insertFront
+	for (size_t i = 1; i <= 6; i++)
+		list.insertBack(i);
+	list.reverseNth(3);
+	cout << "[test reverse nth]: " << list << endl;
+	cout << "[test reverse nth]: size: " << list.size() << endl;
+	if (list.size() != 6)
+		cout << "[testInserts]: Incorrect size" << endl;
+*/
 }
 
 
@@ -299,6 +376,7 @@ void testMP32()
 	testSplit();
 	testMerge();
 	testSort();
+//	VALGRIND_TEST();
 }
 
 int main(int argc, char ** argv) 

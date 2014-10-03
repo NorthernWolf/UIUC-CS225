@@ -145,8 +145,13 @@ void List<T>::reverse( ListNode * & startPoint, ListNode * & endPoint )
 {
   
     ListNode * currentThing = startPoint;//define a pointer to point to stuff
+
+    ListNode * origEndPointNext = endPoint->next;
+    ListNode * origStartPointPrev = startPoint->prev;
+
     while(currentThing != NULL)
     {
+
         //just doing a basic swap here
         //made a temporary thing called holder for the swap
         //then swapped currentThing->prev and currentThing->next
@@ -163,6 +168,29 @@ void List<T>::reverse( ListNode * & startPoint, ListNode * & endPoint )
     startPoint = endPoint;
     endPoint = otherHolder;
 
+
+   
+        if(startPoint->prev != NULL)
+        {
+            startPoint->prev = origStartPointPrev;
+
+            origStartPointPrev->next = startPoint;
+
+        }
+        else 
+            startPoint->prev = NULL;
+
+        if(endPoint->next != NULL)
+        {
+            endPoint->next = origEndPointNext;
+            origEndPointNext-> next = endPoint;
+
+
+        }
+        else 
+            endPoint->next = NULL;
+
+
     
 
    
@@ -178,7 +206,64 @@ void List<T>::reverse( ListNode * & startPoint, ListNode * & endPoint )
 template <class T>
 void List<T>::reverseNth( int n )
 {
-    /// @todo Graded in MP3.1
+
+    if (n == 0 ){
+       return;//do nothing.. there's nothing to do
+    }
+    
+    else if(length == 1 )//if list is only 1 node
+    {
+        return;//same as previous there's nothing to do
+    }
+    else if(head==NULL || tail==NULL)//length = 0
+    {
+        return;//do nothing.. empty list
+    }
+    else if (n >= length)
+    {
+        reverse(head, tail);//if n is large enough, just reverse the list
+        return;
+    }
+   
+    else //normal scenario. I.E. if 2 <= n <length
+    {
+      
+        ListNode * newStartPoint = head;//new start point will always be at head
+        ListNode * newendPoint= NULL;
+        ListNode * traversePointer = head; //start our traverse pointer at the head
+
+        //ListNode * endnext = head;
+        while(traversePointer!= NULL)//keep going until out traverse pointer hits the end
+        {
+            
+
+            for(int i=1 ; i<n ; i++) //keep traversing until nth element
+            {
+                
+                   if(traversePointer!= NULL)
+                   {
+                    //traverse list until we get to nth element
+                    traversePointer = traversePointer->next;//traverse list until we get to nth element 
+                    //cout<<"inside for loop"<<endl;
+                    }
+                   
+            }
+            head = traversePointer;
+            
+            reverse(newStartPoint, traversePointer);//call the actual reverse function
+            newendPoint = traversePointer;
+            newStartPoint = traversePointer->next;
+            traversePointer = traversePointer->next;
+            tail = newendPoint;
+            
+            
+            
+            //cout<<"HI"<<endl;
+            //tail = newendPoint;
+           
+
+        }       
+    }
 }
 
 
@@ -195,6 +280,24 @@ template <class T>
 void List<T>::waterfall()
 {
     /// @todo Graded in MP3.1
+
+
+/*
+    ListNode * mypointer = head;
+    listNode * 
+
+    if(head==NULL || tail==NUll)
+        return;
+    else if (length ==1|| length ==0)
+        return;
+    else
+
+*/
+
+
+
+
+
 }
 
 /**
@@ -262,6 +365,23 @@ typename List<T>::ListNode * List<T>::split(ListNode * start, int splitPoint)
 {
     /// @todo Graded in MP3.2
     return NULL; // change me!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 /**
