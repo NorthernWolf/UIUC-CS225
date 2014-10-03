@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp3 at 2014-10-02 04:19:56
+Testing mp3 at 2014-10-03 09:34:55
 
-"If at first you don't succeed, that's one data point." ~ Randall Munroe
+"You think the sky is like a big big plate." ~ Prof. Jiawei Han
 
 Setting up test environment...
 Compiling...
@@ -20,17 +20,17 @@ testReverse20_backward . . . . . [1 pts]  - passed
 testReverse37_size . . . . . . . [1 pts]  - passed
 testReverse37_forward  . . . . . [1 pts]  - passed
 testReverse37_backward . . . . . [1 pts]  - passed
-testReverseEmpty (asan)  . . . . [1 pts]  - passed
+testReverseEmpty (asan)  . . . . [1 pts]  - FAILED
 testReverse20_memory (asan)  . . [1 pts]  - passed
-testReverseNth20_2_size  . . . . [1 pts]  - passed
+testReverseNth20_2_size  . . . . [1 pts]  - FAILED
 testReverseNth20_2_forward . . . [1 pts]  - FAILED
 testReverseNth20_2_backward  . . [1 pts]  - FAILED
-testReverseNth37_4_size  . . . . [1 pts]  - passed
+testReverseNth37_4_size  . . . . [1 pts]  - FAILED
 testReverseNth37_4_forward . . . [1 pts]  - FAILED
 testReverseNth37_4_backward  . . [1 pts]  - FAILED
-testReverseNth37_37  . . . . . . [1 pts]  - FAILED
+testReverseNth37_37  . . . . . . [1 pts]  - passed
 testReverseNth37_4_memory (asan) [1 pts]  - FAILED
-testReverseNthEmpty (asan) . . . [1 pts]  - FAILED
+testReverseNthEmpty (asan) . . . [1 pts]  - passed
 testWaterfall4_size  . . . . . . [1 pts]  - passed
 testWaterfall4_forward . . . . . [1 pts]  - FAILED
 testWaterfall4_backward  . . . . [2 pts]  - FAILED
@@ -72,5 +72,5 @@ testSortNlogN  . . . . . . . . . [10 pts] - FAILED
 
 Total score...
 ================================================================
-TOTAL SCORE: 19
+TOTAL SCORE: 18
 
