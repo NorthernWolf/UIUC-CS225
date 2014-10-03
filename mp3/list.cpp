@@ -220,13 +220,16 @@ void List<T>::reverseNth( int n )
         ListNode * newStartPoint = head;//new start point will always be at head
         ListNode * newendPoint= NULL;
         ListNode * traversePointer = head; //start our traverse pointer at the head
-        ListNode * tempHead = NULL; 
-        
+        ListNode * newHead = NULL; 
+       
 
+      
         //ListNode * endnext = head;
         while(traversePointer!= NULL)//keep going until out traverse pointer hits the end
         {
             
+                
+    
 
             for(int i=1 ; i<n ; i++) //keep traversing until nth element
             {
@@ -239,11 +242,11 @@ void List<T>::reverseNth( int n )
                     }
             
             }
-            tempHead = traversePointer;
+            
             
             
             reverse(newStartPoint, traversePointer);//call the actual reverse function
-            tempHead = traversePointer;
+           
             newStartPoint = traversePointer->next;//next chunk starts at transverse pointer next
             traversePointer = traversePointer->next;//move transverse pointer along
             newendPoint = traversePointer;//new endpoint is gonna be where transverse pointer stops
@@ -539,24 +542,34 @@ void List<T>::sort()
 template <class T>
 typename List<T>::ListNode * List<T>::mergesort(ListNode * start, int chainLength)
 {
-    /// @todo Graded in MP3.2
+   /// @todo Graded in MP3.2
     //return NULL; // change me!
 
    //base case: length = 1
     if(chainLength ==1)
     {
-        return;
+        return start;
     }
     else
+    {
+        //we need lengths to be able call mergesort on our list
         int midpoint = chainLength/2;//find the midpoint
-        split(midpoint);//split the list into two lists
-        mergesort()
+
+        int list1Length = chainLength-midpoint;//set the length of list 1 
+        int list2Length = chainLength - list1Length;//set the lengh of list 2 accordingly
+       
 
 
 
-    ListNode * list1 = NULL;
-    ListNode * list2 = NULL;
+    //start point of list 1 is 'start'
+    //start point of list 2 is here
+    //ListNode * list2Start= split(start, midpoint);
+
+    ListNode * list1 = mergesort(start, list1Length);
+    ListNode *list2 = mergesort(split(start, midpoint), list2Length);
+
+    
 
     return merge(list1, list2); //return the two lists merged
-
+    }
 }
