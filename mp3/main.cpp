@@ -124,7 +124,7 @@ VALGRIND_TEST(testDestructor37, 10, 10, 2000)
 
 void testReverse()
 {
-	/*
+	
 	cout << "[main]: " << __func__ << "()" << endl;
 	PNG in("in_02.png");
 
@@ -135,7 +135,7 @@ void testReverse()
 	out.writeToFile("reverse.png");
 
 	checkSoln(__func__, out, "soln_reverse.png");
-	*/
+	/*
 	//number test for reverse
 	cout << "[main]: " << __func__ << "()" << endl;
 	List<int> list;
@@ -149,7 +149,7 @@ void testReverse()
 	if (list.size() != 10)
 		cout << "[testInserts]: Incorrect size" << endl;
 
-
+*/
 
 
 
@@ -157,7 +157,7 @@ void testReverse()
 
 void testReverseNth()
 {
-
+/*
 	cout << "[main]: " << __func__ << "()" << endl;
 	PNG in("in_03.png");
 	
@@ -176,7 +176,7 @@ void testReverseNth()
 	out.writeToFile("reverseNth_02.png");
 
 	checkSoln(__func__, out, "soln_reverseNth_02.png");
-/*
+*/
 
 	//number test for reverse nth
 	cout << "[main]: " << __func__ << "()" << endl;
@@ -190,7 +190,7 @@ void testReverseNth()
 	cout << "[test reverse nth]: size: " << list.size() << endl;
 	if (list.size() != 6)
 		cout << "[testInserts]: Incorrect size" << endl;
-*/
+
 }
 
 

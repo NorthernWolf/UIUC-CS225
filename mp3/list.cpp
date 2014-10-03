@@ -146,8 +146,8 @@ void List<T>::reverse( ListNode * & startPoint, ListNode * & endPoint )
   
     ListNode * currentThing = startPoint;//define a pointer to point to stuff
 
-    ListNode * origEndPointNext = endPoint->next;
-    ListNode * origStartPointPrev = startPoint->prev;
+    //ListNode * origEndPointNext = endPoint->next;
+    //ListNode * origStartPointPrev = startPoint->prev;
 
     while(currentThing != NULL)
     {
@@ -162,33 +162,35 @@ void List<T>::reverse( ListNode * & startPoint, ListNode * & endPoint )
         //traverse list
         currentThing = currentThing->prev;
     }
+    
+
+        //special case conditions
+        if(endPoint->next != NULL || startPoint->prev !=NULL) //if were reversing say in the middle of a list
+        {    
+            endPoint->prev = startPoint->prev;
+            startPoint->next = endPoint->next;
+        }
+        else if(endPoint->next ==NULL) //reversing at end of list
+        {
+            startPoint->next = NULL;
+            endPoint->prev = startPoint->prev;
+
+        }
+        else if(startPoint->prev==NULL) //reversing at beginning of list
+        {
+            endPoint->prev = NULL;
+            startPoint->next = endPoint->next;
+        }
+        
+
+
+
+       
     //update new start and end points
     //using a swap again
     ListNode * otherHolder = startPoint;
     startPoint = endPoint;
     endPoint = otherHolder;
-
-
-   
-        if(startPoint->prev != NULL)
-        {
-            startPoint->prev = origStartPointPrev;
-
-            origStartPointPrev->next = startPoint;
-
-        }
-        else 
-            startPoint->prev = NULL;
-
-        if(endPoint->next != NULL)
-        {
-            endPoint->next = origEndPointNext;
-            origEndPointNext-> next = endPoint;
-
-
-        }
-        else 
-            endPoint->next = NULL;
 
 
     
@@ -248,6 +250,8 @@ void List<T>::reverseNth( int n )
                     }
                    
             }
+            
+
             head = traversePointer;
             
             reverse(newStartPoint, traversePointer);//call the actual reverse function
@@ -255,7 +259,9 @@ void List<T>::reverseNth( int n )
             newStartPoint = traversePointer->next;
             traversePointer = traversePointer->next;
             tail = newendPoint;
-            
+             
+        
+        
             
             
             //cout<<"HI"<<endl;
@@ -281,18 +287,61 @@ void List<T>::waterfall()
 {
     /// @todo Graded in MP3.1
 
+    int nodeNumber = 1; //make something to keep track of which node were on
 
-/*
+
     ListNode * mypointer = head;
-    listNode * 
+    ListNode * holder = NULL;
+   
 
-    if(head==NULL || tail==NUll)
+    if(head==NULL || tail== NULL)
         return;
-    else if (length ==1|| length ==0)
+    else if (length == 1 || length == 0)
         return;
     else
+        while(mypointer->next != NULL)
+        {
+            if(nodeNumber%2==1) //odd numbered list node don't do anything
+            {
+                nodeNumber++; //increase node number
+                mypointer = mypointer->next; //move pointer along
+            }
+            else if(nodeNumber%2 == 0)//now we need to take out the node and append it to the back
+            {
 
-*/
+                holder = mypointer->next; //point holder to next node we want to check
+                mypointer->next->prev = mypointer->prev;//put the prev pointer of next node equal to earlier node
+                mypointer->prev->next = mypointer->next;//put the next pointer of earlier node equal to the next node
+                mypointer->prev = tail;//move pointer so its prev is tail
+                mypointer->next = NULL;//set the next null
+                tail->next = mypointer;//make original tail next point to thing were appending at end
+                //now update tail
+                tail = mypointer;
+
+                mypointer = holder;//move pointer to next thing
+                nodeNumber++;//increment node number
+
+            }
+                 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
 
 
 
