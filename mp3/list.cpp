@@ -413,20 +413,20 @@ template <class T>
 typename List<T>::ListNode * List<T>::split(ListNode * start, int splitPoint)
 {
     /// @todo Graded in MP3.2
-    return NULL; // change me!
+    //return NULL; // change me!
 
 
+    ListNode *myPointer = start;
+    
+    for(int i=0 ; i< splitPoint; i++)
+    {
+        myPointer = myPointer->next;//traverse until we get to splitpoint
 
-
-
-
-
-
-
-
-
-
-
+    }
+   
+        myPointer->prev->next = NULL;//set the next pointer of the previous thing to NULL
+        myPointer->prev = NULL; //make the previous pointer of myPointer point to nothing
+        return myPointer;//return the second list created from the split.. my pointer is the head of the second list
 
 
 
