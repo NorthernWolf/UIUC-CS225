@@ -1,0 +1,318 @@
+Monad Autograder
+Testing mp3 at 2014-10-04 13:49:47
+
+"The slogan of Subversion for a while was "CVS done right", or something like that, and if you start with that kind of slogan, there's nowhere you can go. There is no way to do CVS right." ~ Linus Torvalds
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testInsertFront  . . . . . . . . [2 pts]  - FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+testInsertBack . . . . . . . . . [2 pts]  - passed
+testDestructor10 (asan)  . . . . [3 pts]  - passed
+testDestructor37 (asan)  . . . . [3 pts]  - FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+testReverse20_size . . . . . . . [1 pts]  - passed
+testReverse20_forward  . . . . . [1 pts]  - passed
+testReverse20_backward . . . . . [1 pts]  - passed
+testReverse37_size . . . . . . . [1 pts]  - passed
+testReverse37_forward  . . . . . [1 pts]  - passed
+testReverse37_backward . . . . . [1 pts]  - passed
+testReverseEmpty (asan)  . . . . [1 pts]  - passed
+testReverse20_memory (asan)  . . [1 pts]  - passed
+testReverseNth20_2_size  . . . . [1 pts]  - passed
+testReverseNth20_2_forward . . . [1 pts]  - FAILED: unit_tests.cpp:115: List does not match solution with forward traversal
+testReverseNth20_2_backward  . . [1 pts]  - FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+testReverseNth37_4_size  . . . . [1 pts]  - passed
+testReverseNth37_4_forward . . . [1 pts]  - FAILED: unit_tests.cpp:115: List does not match solution with forward traversal
+testReverseNth37_4_backward  . . [1 pts]  - FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+testReverseNth37_37  . . . . . . [1 pts]  - passed
+testReverseNth37_4_memory (asan) [1 pts]  - FAILED: Memory errors detected by ASAN
+testReverseNthEmpty (asan) . . . [1 pts]  - passed
+testWaterfall4_size  . . . . . . [1 pts]  - passed
+testWaterfall4_forward . . . . . [1 pts]  - passed
+testWaterfall4_backward  . . . . [2 pts]  - passed
+testWaterfall7_size  . . . . . . [1 pts]  - passed
+testWaterfall7_forward . . . . . [1 pts]  - passed
+testWaterfall7_backward  . . . . [2 pts]  - passed
+testWaterfall12_size . . . . . . [1 pts]  - passed
+testWaterfall12_forward  . . . . [1 pts]  - passed
+testWaterfall12_backward . . . . [2 pts]  - passed
+testWaterfall7_memory (asan) . . [3 pts]  - passed
+testWaterfall7_empty (asan)  . . [3 pts]  - passed
+testSplit5_this_size . . . . . . [1 pts]  - passed
+testSplit5_this_forward  . . . . [1 pts]  - passed
+testSplit5_this_backward . . . . [1 pts]  - passed
+testSplit5_split_size  . . . . . [1 pts]  - passed
+testSplit5_split_forward . . . . [1 pts]  - passed
+testSplit5_split_backward  . . . [1 pts]  - passed
+testSplit5_mem (asan)  . . . . . [3 pts]  - passed
+testMerge_size . . . . . . . . . [1 pts]  - passed
+testMerge_forward  . . . . . . . [1 pts]  - passed
+testMerge_backward . . . . . . . [1 pts]  - FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+testMerge_mem (asan) . . . . . . [3 pts]  - FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+testSort16p_s  . . . . . . . . . [1 pts]  - FAILED: Segmentation fault
+testSort16p_f  . . . . . . . . . [2 pts]  - FAILED: Segmentation fault
+testSort16p_b  . . . . . . . . . [2 pts]  - FAILED: Segmentation fault
+testSort20p_s  . . . . . . . . . [1 pts]  - FAILED: Segmentation fault
+testSort20p_f  . . . . . . . . . [2 pts]  - FAILED: Segmentation fault
+testSort20p_b  . . . . . . . . . [2 pts]  - FAILED: Segmentation fault
+testSort27p_s  . . . . . . . . . [1 pts]  - FAILED: Segmentation fault
+testSort27p_f  . . . . . . . . . [2 pts]  - FAILED: Segmentation fault
+testSort27p_b  . . . . . . . . . [2 pts]  - FAILED: Segmentation fault
+testSortEmpty  . . . . . . . . . [5 pts]  - FAILED: Segmentation fault
+testSort259p_s . . . . . . . . . [1 pts]  - FAILED: Segmentation fault
+testSort259p_f . . . . . . . . . [2 pts]  - FAILED: Segmentation fault
+testSort259p_b . . . . . . . . . [2 pts]  - FAILED: Segmentation fault
+testSortMemLeak (asan) . . . . . [5 pts]  - FAILED: Memory errors detected by ASAN
+testSortNlogN  . . . . . . . . . [10 pts] - FAILED: Segmentation fault
+
+
+Total score...
+================================================================
+TOTAL SCORE: 46
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+testInsertFront [2 points]
+Result: FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+< 13 12 11 10 9 8 7 6 5 4 3 2 1 0 >
+
+----------------------------------------------------------------
+testDestructor37 (run under asan) [3 points]
+Result: FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+Took unknown time (2000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testDestructor37 [worth 3 points, output below]
+< 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 >
+Result: FAILED:
+unit_tests.cpp:117: List does not match solution with backward traversal
+
+----------------------------------------------------------------
+testReverseNth20_2_forward [1 points]
+Result: FAILED: unit_tests.cpp:115: List does not match solution with forward traversal
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+< 0 2 4 6 8 10 12 14 16 18 >
+
+----------------------------------------------------------------
+testReverseNth20_2_backward [1 points]
+Result: FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+< 0 2 4 6 8 10 12 14 16 18 >
+
+----------------------------------------------------------------
+testReverseNth37_4_forward [1 points]
+Result: FAILED: unit_tests.cpp:115: List does not match solution with forward traversal
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+< 0 4 8 12 16 20 24 28 32 36 >
+
+----------------------------------------------------------------
+testReverseNth37_4_backward [1 points]
+Result: FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+< 0 4 8 12 16 20 24 28 32 36 >
+
+----------------------------------------------------------------
+testReverseNth37_4_memory (run under asan) [1 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testReverseNth37_4_memory [worth 1 points, output below]
+< 0 4 8 12 16 20 24 28 32 36 >
+
+=================================================================
+==12875==ERROR: LeakSanitizer: detected memory leaks
+
+Indirect leak of 648 byte(s) in 27 object(s) allocated from:
+    #0 0x4573fe in operator new(unsigned long) /class/cs225/llvm/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:52
+    #1 0x6b537b in List<int>::insertBack(int const&) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x6b537b)
+    #2 0x66d71d in testReverseNth(int, int, check_t, bool) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x66d71d)
+    #3 0x66fd22 in proxy_test::testReverseNth37_4_memory(util::sizedpipestream<512ul>&) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x66fd22)
+    #4 0x4b8afb in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x4b8afb)
+    #5 0x49c099 in proxy::test_execution::child_test() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x49c099)
+    #6 0x48b10b in proxy::test_execution::child() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x48b10b)
+    #7 0x484e45 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x484e45)
+    #8 0x47d038 in proxy::RunTests::run_single_test(char const*) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x47d038)
+    #9 0x47c0b1 in proxy::RunTests::execute_by_mode() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x47c0b1)
+    #10 0x477cac in proxy::RunTests::execute() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x477cac)
+    #11 0x4758ca in main (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x4758ca)
+    #12 0x3d93a1ed5c in __libc_start_main (/lib64/libc.so.6+0x3d93a1ed5c)
+
+SUMMARY: AddressSanitizer: 648 byte(s) leaked in 27 allocation(s).
+Result: FAILED:
+Memory Leaks Detected by ASAN
+
+----------------------------------------------------------------
+testMerge_backward [1 points]
+Result: FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+< 0 1 2 3 4 5 6 7 >
+
+----------------------------------------------------------------
+testMerge_mem (run under asan) [3 points]
+Result: FAILED: unit_tests.cpp:117: List does not match solution with backward traversal
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testMerge_mem [worth 3 points, output below]
+< 0 1 2 3 4 5 6 7 >
+Result: FAILED:
+unit_tests.cpp:117: List does not match solution with backward traversal
+
+----------------------------------------------------------------
+testSort16p_s [1 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort16p_f [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort16p_b [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort20p_s [1 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort20p_f [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort20p_b [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort27p_s [1 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort27p_f [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort27p_b [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSortEmpty [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort259p_s [1 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort259p_f [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSort259p_b [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSortMemLeak (run under asan) [5 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testSortMemLeak [worth 5 points, output below]
+ASAN:SIGSEGV
+=================================================================
+==12963==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x0000006e2b5a sp 0x7fff9450a120 bp 0x7fff9450a370 T0)
+    #0 0x6e2b59 in List<int>::split(List<int>::ListNode*, int) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x6e2b59)
+    #1 0x6e23f4 in List<int>::mergesort(List<int>::ListNode*, int) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x6e23f4)
+    #2 0x6e2460 in List<int>::mergesort(List<int>::ListNode*, int) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x6e2460)
+    #3 0x6bc287 in List<int>::sort() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x6bc287)
+    #4 0x6a7cef in proxy_test::helpSort2(util::sizedpipestream<512ul>&, int, int, bool, check_t) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x6a7cef)
+    #5 0x6a8f4b in proxy_test::testSortMemLeak(util::sizedpipestream<512ul>&) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x6a8f4b)
+    #6 0x4b8afb in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x4b8afb)
+    #7 0x49c099 in proxy::test_execution::child_test() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x49c099)
+    #8 0x48b10b in proxy::test_execution::child() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x48b10b)
+    #9 0x484e45 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x484e45)
+    #10 0x47d038 in proxy::RunTests::run_single_test(char const*) (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x47d038)
+    #11 0x47c0b1 in proxy::RunTests::execute_by_mode() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x47c0b1)
+    #12 0x477cac in proxy::RunTests::execute() (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x477cac)
+    #13 0x4758ca in main (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x4758ca)
+    #14 0x3d93a1ed5c in __libc_start_main (/lib64/libc.so.6+0x3d93a1ed5c)
+    #15 0x46ce08 in _start (/dev/shm/khattar2/cs225_current_checkout/monad/mp3_grade/proxy-asan+0x46ce08)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV ??:0 List<int>::split(List<int>::ListNode*, int)
+==12963==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+testSortNlogN [10 points]
+Result: FAILED: Segmentation fault
+Took 0ms (20000ms timeout)
+Output:
+----------------------------------------------------------------
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 46
+
