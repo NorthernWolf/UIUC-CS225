@@ -69,7 +69,7 @@ template <typename T>
 void QuackFun::scramble(queue<T> & q)
 {
     stack<T> s;
-    queue<T> q2; //def using that 
+    queue<T> q2; 
     int block = 1;
 
     //for even blocks load it into the stack and then pop it off the stack into the que (so they'll reverse)
@@ -88,6 +88,7 @@ void QuackFun::scramble(queue<T> & q)
             if(block % 2 ==0)
             {
              //were on an even block so flip this thing
+                //use stack to flip
                 for(int j= 0;j<block;j++)
                 {
                     if(!q.empty())
@@ -100,15 +101,15 @@ void QuackFun::scramble(queue<T> & q)
                 while(!s.empty())
                 {
                     q2.push(s.top());
-                    q.pop();
+                    s.pop(); 
                 }
             }
-            else if (block%2==1)//odd block so don't flip
+            else if (block%2==1)//odd block so don't flip 
             {
                 
 
                
-                
+                //use que to not flip
                 for(int k=0;k<block;k++)
                 {
 
@@ -122,14 +123,20 @@ void QuackFun::scramble(queue<T> & q)
 
             }
 
-
-
         block++;
         }
 
     }
-q=q2;
     
+    //instead of using overload = operator just using this while loop and push and pop
+
+    
+    while(!q2.empty()){
+
+        q.push(q2.front());
+        q2.pop();
+    
+    }
 }
     // Your code here
 
