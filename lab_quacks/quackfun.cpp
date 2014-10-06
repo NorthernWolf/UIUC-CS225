@@ -156,10 +156,21 @@ void QuackFun::scramble(queue<T> & q)
 template <typename T>
 bool QuackFun::verifySame(stack<T> & s, queue<T> & q)
 {
-    bool retval = true; // optional
-    //T temp1; // rename me
-    //T temp2; // rename :)
     
+    bool retval = true;
+    /*
+    T temp1;
+    T temp2; 
+    if(s.empty() || q.empty())
+        return true;
+    else
+    {
+    
+    retval = verifySame(s,q);
+    
+    }
+    */
     return retval;
+
 }
 
