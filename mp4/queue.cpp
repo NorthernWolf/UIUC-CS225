@@ -88,5 +88,6 @@ T Queue<T>::peek()
 template<class T>
 bool Queue<T>::isEmpty() const
 {
+        //both instack and outstack should be empty for isEmpty to return true
         return inStack.isEmpty() && outStack.isEmpty(); //will return true if both are empty! if either are false it'll return false
 }
