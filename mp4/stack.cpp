@@ -8,7 +8,7 @@
  * @author Chase Geigle
  * @date Fall 2012
  */
-
+using namespace std; 
 /**
  * Adds the parameter object to the top of the Stack. That is, the element
  * should go at the beginning of the list.
@@ -20,10 +20,14 @@
 template<class T>
 void Stack<T>::push(T const & newItem)
 {
-    /**
-     * @todo Your code here!
-     */
-}
+    if(myStack.size() != myStack.max_size())
+    {
+        myStack.push_front(newItem); //found push front on the website lel
+    }
+    else
+       // cout<< "The stack is full! Can't push!" <<endl;
+        return;
+}   
 
 /**
  * Removes the object on top of the Stack, and returns it. That is, remove
@@ -37,10 +41,12 @@ void Stack<T>::push(T const & newItem)
 template<class T>
 T Stack<T>::pop()
 {
-    /**
-     * @todo Your code here! You will have to replace the following line.
-     */
-    return T();
+    T holder;
+    holder = myStack.front();//give a new node the value of the front of stack
+    myStack.pop_front(); //delete the top of the stack
+    return holder; 
+
+    
 }
 
 /**
@@ -50,10 +56,9 @@ T Stack<T>::pop()
  */
 template <class T>
 void Stack<T>::add( const T & theItem ) {
-    /**
-     * @todo Your code here! Hint: this should call another Stack function
-     *  to add the element to the Stack.
-     */
+
+    push(theItem);
+
 }
 
 /**
@@ -63,12 +68,8 @@ void Stack<T>::add( const T & theItem ) {
  */
 template <class T>
 T Stack<T>::remove() {
-    /**
-     * @todo Your code here! Hint: this should call another Stack function
-     *  to remove an element from the Stack and return it. You will need to
-     *  replace the following line.
-     */
-    return T();
+    
+    return pop();
 }
 
 /**
@@ -84,10 +85,7 @@ T Stack<T>::remove() {
 template<class T>
 T Stack<T>::peek()
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return T();
+    return myStack.front();//return the front of the stack but don't delete it
 }
 
 /**
@@ -102,8 +100,8 @@ T Stack<T>::peek()
 template<class T>
 bool Stack<T>::isEmpty() const
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return true;
+    if(!myStack.empty())//if not empty return false
+        return false;
+    else if (myStack.empty())//if empty return true
+        return true;
 }
