@@ -14,9 +14,7 @@
 template<class T>
 void Queue<T>::enqueue(T const & newItem)
 {
-    /**
-     * @todo Your code here!
-     */
+    inStack.push(newItem);
 }
 
 /**
@@ -28,10 +26,14 @@ void Queue<T>::enqueue(T const & newItem)
 template<class T>
 T Queue<T>::dequeue()
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return T();
+    if(outStack.isEmpty())
+    {
+        while(!inStack.isEmpty())//until the inStack empties out
+
+            outStack.push(inStack.pop()); //pop stuff off of instack and push it onto outstack
+    }
+
+    return outStack.pop(); //"pop" off the "first" value of oustack
 }
 
 /**
@@ -41,10 +43,9 @@ T Queue<T>::dequeue()
  */
 template <class T>
 void Queue<T>::add( const T & theItem ) {
-    /**
-     * @todo Your code here! Hint: this function should call a Queue
-     *  function to add the element to the Queue.
-     */
+
+
+    enqueue(theItem);
 }
 
 /**
@@ -54,12 +55,8 @@ void Queue<T>::add( const T & theItem ) {
  */
 template <class T>
 T Queue<T>::remove() {
-    /**
-     * @todo Your code here! Hint: this function should call a Queue
-     *  function to remove an element from the Queue and return it. You will
-     *  need to replace the following line.
-     */
-    return T();
+    
+    return dequeue();
 }
 
 /**
@@ -71,10 +68,16 @@ T Queue<T>::remove() {
 template<class T>
 T Queue<T>::peek()
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return T();
+    //flip instack into outstack
+    //peek the bottom element of instack which is the top element of outstack yaaayyyyy
+    if(outStack.isEmpty())
+    {
+        while(!inStack.isEmpty())//until the inStack empties out
+
+            outStack.push(inStack.pop()); //pop stuff off of instack and push it onto outstack
+    }
+
+    return outStack.peek();//peek at top of outstack
 }
 
 /**
@@ -85,8 +88,8 @@ T Queue<T>::peek()
 template<class T>
 bool Queue<T>::isEmpty() const
 {
-    /**
-     * @todo Your code here! You will need to replace the following line.
-     */
-    return true;
+    if(!inStack.isEmpty())//if not empty return false
+        return false;
+    else if (inStack.isEmpty())//if empty return true
+        return true;
 }
