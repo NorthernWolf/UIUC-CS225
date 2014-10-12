@@ -75,8 +75,27 @@ void BinaryTree<T>::printLeftToRight(const Node * subRoot) const
 template <typename T>
 void BinaryTree<T>::mirror()
 {
-	// your code here
+	mirror(root);
 }
+
+//helper function for mirror
+
+template <typename T>
+void BinaryTree<T>::mirror(Node * subRoot) 
+{
+	Node * holder; //holder for swap
+
+	if(subRoot == NULL) //base case
+		return;
+
+	mirror(subRoot->left);
+	mirror(subRoot->right);
+	//swap LEL
+	holder = subRoot->left;
+	subRoot->left = subRoot-> right;
+	subRoot->right = holder;
+}
+
 
 /**
  * @return True if an in-order traversal of the tree would produce a nondecreasing list
@@ -86,9 +105,39 @@ void BinaryTree<T>::mirror()
 template <typename T>
 bool BinaryTree<T>::isOrdered() const
 {
-    // your code here
-	return false;
+    return isOrdered(root);
 }
+
+//helper function for isOrdered
+template <typename T>
+bool BinaryTree<T>::isOrdered(const Node * subRoot) const
+{
+	bool output;
+
+	if(subRoot->left != NULL) //base case
+	{
+		if(subRoot->left->elem > subRoot->elem || subRoot->left->elem >root->elem)
+		{	
+			output = false;
+			return output;
+		}
+		isOrdered(subRoot->left);
+	}
+
+	if(subRoot->right != NULL)
+	{
+		if(subRoot->right->elem < subRoot->elem || subRoot->right->elem < root->elem)
+		{	
+			output = false;
+			return output;
+		}
+		isOrdered(subRoot->right);
+	}
+
+
+	return true;
+}
+
 
 /**
  * Prints out all the possible paths from the root of the tree to any leaf node.
@@ -99,7 +148,28 @@ bool BinaryTree<T>::isOrdered() const
 template <typename T>
 void BinaryTree<T>::printPaths() const
 {
-    // your code here
+    printPaths(root);
+}
+
+
+//helper function
+template <typename T>
+void BinaryTree<T>::printPaths(Node * subRoot) const
+{
+
+	// Base case - null node
+	if (subRoot == NULL)
+		return;
+
+	// Print this node
+	cout << subRoot->elem << ' ';
+
+	// Print left subtree
+	printPaths(subRoot->left);
+
+	// Print right subtree
+	printPaths(subRoot->right);
+
 }
 
 /**

@@ -177,6 +177,16 @@ class BinaryTree
          * @param subRoot The current node in the recursion
          */
         void clear(Node* subRoot);
+
+        /*helper function for mirror*/
+        void mirror(Node * subRoot);
+
+        /*helper function for isOrdered*/
+        bool isOrdered(const Node * subRoot) const;
+
+        /*helper function for printPaths*/
+        void printPaths(Node * subRoot) const;
+
 };
 
 #include "binarytree_given.cpp"
