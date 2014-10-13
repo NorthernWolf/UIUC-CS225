@@ -148,28 +148,46 @@ bool BinaryTree<T>::isOrdered(const Node * subRoot) const
 template <typename T>
 void BinaryTree<T>::printPaths() const
 {
-    printPaths(root);
+
+	std::vector<T> holder;
+    printPaths(root, holder);
 }
 
 
 //helper function
 template <typename T>
-void BinaryTree<T>::printPaths(Node * subRoot) const
+void BinaryTree<T>::printPaths( const Node * subRoot, std::vector<T> & holder) const
 {
 
 	// Base case - null node
 	if (subRoot == NULL)
 		return;
 
-	// Print this node
-	cout << subRoot->elem << ' ';
 
-	// Print left subtree
-	printPaths(subRoot->left);
+	holder.push_back(subRoot->elem);
 
-	// Print right subtree
-	printPaths(subRoot->right);
 
+	if(subRoot->left != NULL ||subRoot->right != NULL)
+	{
+		printPaths(subRoot->left, holder);
+		printPaths(subRoot->right, holder);
+	}
+	
+
+	if(subRoot->right == NULL && subRoot->left == NULL)
+	{
+
+		cout<< "Path: " ;
+
+		for(int i = 0; i< holder.size(); i++)
+		{
+			cout<< holder[i] << " ";
+		}
+			cout<< endl;
+
+	}
+
+	holder.pop_back();
 }
 
 /**

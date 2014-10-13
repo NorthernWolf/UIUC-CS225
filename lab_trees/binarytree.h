@@ -185,7 +185,7 @@ class BinaryTree
         bool isOrdered(const Node * subRoot) const;
 
         /*helper function for printPaths*/
-        void printPaths(Node * subRoot) const;
+        void printPaths(const Node * subRoot, std::vector<T> & holder) const;
 
 };
 
