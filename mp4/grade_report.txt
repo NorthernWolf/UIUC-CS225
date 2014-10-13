@@ -1,7 +1,9 @@
+svn: Working copy '/dev/shm/khattar2/cs225_current_checkout' locked
+svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp4 at 2014-10-12 15:38:18
+Testing mp4 at 2014-10-13 03:53:46
 
-"Fish are meat, they're like water poultry." ~ Chase Geigle
+"If you're not failing every now and again, it's a sign you're not doing anything very innovative." ~ Woody Allen
 
 Setting up test environment...
 Compiling...
