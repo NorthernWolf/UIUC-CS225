@@ -183,47 +183,65 @@ animation filler::fill( PNG & img, int x, int y,
         int holder1 = xCordStuct.remove();
         int holder2 = yCordStruct.remove(); 
 
-        int newTolerance = (img(holder1, holder2)->red - img(x,y)->red)^2 - (img(holder1, holder2)->green - img(x,y)->green)^2 - (img(holder1, holder2)->blue - img(x,y)->blue)^2;
+
+
+
+        //helper function? naaaaahhhhhh
+        int newTolerance = (img(holder1, holder2)->red - img(x,y)->red)*(img(holder1, holder2)->red - img(x,y)->red)- (img(holder1, holder2)->green - img(x,y)->green)*(img(holder1, holder2)->green - img(x,y)->green) - (img(holder1, holder2)->blue - img(x,y)->blue)*(img(holder1, holder2)->blue - img(x,y)->blue);
 
         if(newTolerance <= tolerance && !hasBeenChanged[holder1][holder2] == true)
         {
 
 
             *img(holder1, holder2) = fillColor(holder1,holder2);
-            hasBeenChanged[holder1][holder2] = true;
+            
 
 
         }
+        //check edge cases
+        //make if visited
+        hasBeenChanged[holder1][holder2] = true;
 
         //check element to the right
-        if(hasBeenChanged[holder1+1][holder2] == false)
+        if(holder1+1 >= 0 && holder1+1 <= img.width() && holder2 >=0 && holder2 <= img.height() && hasBeenChanged[holder1+1][holder2] == false)
         {
             xCordStuct.add(holder1+1);
             yCordStruct.add(holder2);
         }
 
         //now check element to the left
-        if(hasBeenChanged[holder1-1][holder2] == false)
+        if(holder1-1 >= 0 && holder1-1 <= img.width() && holder2 >=0 && holder2 <= img.height() && hasBeenChanged[holder1-1][holder2] == false)
         {
             xCordStuct.add(holder1-1);
             yCordStruct.add(holder2);
         }
         //now check element above
-        if(hasBeenChanged[holder1][holder2+1] == false)
+        if(holder1 >=0 && holder1 <= img.width() && holder2+1 >=0 && holder2+1 <= img.height() && hasBeenChanged[holder1][holder2+1] == false)
         {
             xCordStuct.add(holder1);
             yCordStruct.add(holder2+1);
         }
         //now check element below
-        if(hasBeenChanged[holder1][holder2-1] == false)
+        if(holder1 >=0 && holder1 <= img.width() && holder2-1 >=0 && holder2-1 <= img.height() && hasBeenChanged[holder1][holder2-1] == false)
         {
             xCordStuct.add(holder1);
             yCordStruct.add(holder2-1);
         }
-
-
-
     }
+
+
+    //now do animations stuff
+
+    int k = 0;
+
+    if(k% frameFreq ==0)
+    {
+        animation.addFrame(img);
+    }
+    k++;
+
+
+
 
     return animation();
 }

@@ -94,7 +94,7 @@ T Stack<T>::peek()
  * Determines if the Stack is empty.
  *
  * @note This function must be O(1)! Note that the std::list's size()
- *	function is O(n), so you should not attempt to use it here.
+ *  function is O(n), so you should not attempt to use it here.
  *
  * @return Whether or not the stack is empty (bool).
  */
