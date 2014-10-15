@@ -8,81 +8,93 @@
  */
 #include "filler.h"
 
+
+
+//dfs <->stack
+
+
+
+
 animation filler::dfs::fillSolid( PNG & img, int x, int y, 
         RGBAPixel fillColor, int tolerance, int frameFreq ) {
-    /**
-     * @todo Your code here! You should replace the following line with a
-     *  correct call to fill with the correct colorPicker parameter.
-     */
-    return animation();
+    
+
+
+    solidColorPicker filler = solidColorPicker( fillColor );
+    return fill(img, x, y, filler, tolerance, frameFreq);
 }
 
 animation filler::dfs::fillGrid( PNG & img, int x, int y, 
         RGBAPixel gridColor, int gridSpacing, int tolerance, int frameFreq ) {
-    /**
-     * @todo Your code here! You should replace the following line with a
-     *  correct call to fill with the correct colorPicker parameter.
-     */
-    return animation();
+    
+
+
+    gridColorPicker filler = gridColorPicker( gridColor,  gridSpacing);
+    return fill(img, x, y, filler, tolerance, frameFreq);
 }
 
 animation filler::dfs::fillGradient( PNG & img, int x, int y, 
         RGBAPixel fadeColor1, RGBAPixel fadeColor2, int radius, 
         int tolerance, int frameFreq ) {
-    /**
-     * @todo Your code here! You should replace the following line with a
-     *  correct call to fill with the correct colorPicker parameter.
-     */
-    return animation();
+    
+
+
+    gradientColorPicker filler = gradientColorPicker(  fadeColor1, fadeColor2,  radius,  x,  y );
+    return fill(img, x, y, filler, tolerance, frameFreq);
 }
 
 animation filler::dfs::fill( PNG & img, int x, int y, 
         colorPicker & fillColor, int tolerance, int frameFreq ) {
-    /**
-     * @todo Your code here! You should replace the following line with a
-     *  correct call to filler::fill with the correct template parameter
-     *  indicating the ordering structure to be used in the fill.
-     */
-    return animation();
+    
+    return filler::fill<Stack>(img, x, y, fillColor, tolerance, frameFreq);
 }
+
+
+
+
+
+//bfs <-> queue
+
+
 
 animation filler::bfs::fillSolid( PNG & img, int x, int y, 
         RGBAPixel fillColor, int tolerance, int frameFreq ) {
-    /**
-     * @todo Your code here! You should replace the following line with a
-     *  correct call to fill with the correct colorPicker parameter.
-     */
-    return animation();
+    
+
+    solidColorPicker filler = solidColorPicker( fillColor );
+    return fill(img, x, y, filler, tolerance, frameFreq);
 }
 
 animation filler::bfs::fillGrid( PNG & img, int x, int y, 
         RGBAPixel gridColor, int gridSpacing, int tolerance, int frameFreq ) {
-    /**
-     * @todo Your code here! You should replace the following line with a
-     *  correct call to fill with the correct colorPicker parameter.
-     */
-    return animation();
+    
+
+
+    gridColorPicker filler = gridColorPicker( gridColor,  gridSpacing);
+    return fill(img, x, y, filler, tolerance, frameFreq);
 }
 
 animation filler::bfs::fillGradient( PNG & img, int x, int y, 
         RGBAPixel fadeColor1, RGBAPixel fadeColor2, int radius, 
         int tolerance, int frameFreq ) {
-    /**
-     * @todo Your code here! You should replace the following line with a
-     *  correct call to fill with the correct colorPicker parameter.
-     */
-    return animation();
+    
+
+
+    gradientColorPicker filler = gradientColorPicker(fadeColor1, fadeColor2,  radius,  x,  y );
+    return fill(img, x, y, filler, tolerance, frameFreq);
+
 }
 
 animation filler::bfs::fill( PNG & img, int x, int y, 
         colorPicker & fillColor, int tolerance, int frameFreq ) {
-    /**
-     * @todo Your code here! You should replace the following line with a
-     *  correct call to filler::fill with the correct template parameter
-     *  indicating the ordering structure to be used in the fill.
-     */
-    return animation();
+    
+    return filler::fill<Queue>(img, x, y, fillColor, tolerance, frameFreq);;
 }
+
+
+
+
+//now for the hard one :(
 
 template <template <class T> class OrderingStructure>
 animation filler::fill( PNG & img, int x, int y,
@@ -141,5 +153,77 @@ animation filler::fill( PNG & img, int x, int y,
      *        have been checked. So if frameFreq is set to 1, a pixel should
      *        be filled every frame.
      */
+
+
+    //declare ordering stuctures
+    //one for x coordinate, one for y coordinate
+    OrderingStructure <int> xCordStuct;
+    OrderingStructure <int> yCordStruct;
+    bool hasBeenChanged[img.width()][img.height()]; //declare a boolean 2d array for true or false to know if image is done.  
+    //initialize the 2d array to fale
+    for (int i = 0; i < img.width(); i++)
+    {
+        for (int j = 0; j < img.height(); j++)
+        {
+            hasBeenChanged[i][j] = false;
+        }
+    }
+
+
+
+    //begin by pushing our starting point onto the stack
+    xCordStuct.add(x);
+    yCordStruct.add(y);
+
+
+    //main while loop
+    while(!xCordStuct.isEmpty() && !yCordStruct.isEmpty())//until the stack/queue (?) is empty
+    {
+        //begin by poping off what we want to work with
+        int holder1 = xCordStuct.remove();
+        int holder2 = yCordStruct.remove(); 
+
+        int newTolerance = (img(holder1, holder2)->red - img(x,y)->red)^2 - (img(holder1, holder2)->green - img(x,y)->green)^2 - (img(holder1, holder2)->blue - img(x,y)->blue)^2;
+
+        if(newTolerance <= tolerance && !hasBeenChanged[holder1][holder2] == true)
+        {
+
+
+            *img(holder1, holder2) = fillColor(holder1,holder2);
+            hasBeenChanged[holder1][holder2] = true;
+
+
+        }
+
+        //check element to the right
+        if(hasBeenChanged[holder1+1][holder2] == false)
+        {
+            xCordStuct.add(holder1+1);
+            yCordStruct.add(holder2);
+        }
+
+        //now check element to the left
+        if(hasBeenChanged[holder1-1][holder2] == false)
+        {
+            xCordStuct.add(holder1-1);
+            yCordStruct.add(holder2);
+        }
+        //now check element above
+        if(hasBeenChanged[holder1][holder2+1] == false)
+        {
+            xCordStuct.add(holder1);
+            yCordStruct.add(holder2+1);
+        }
+        //now check element below
+        if(hasBeenChanged[holder1][holder2-1] == false)
+        {
+            xCordStuct.add(holder1);
+            yCordStruct.add(holder2-1);
+        }
+
+
+
+    }
+
     return animation();
 }

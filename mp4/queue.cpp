@@ -14,7 +14,7 @@
 template<class T>
 void Queue<T>::enqueue(T const & newItem)
 {
-    inStack.push(newItem);
+    inStack.push(newItem); 
 }
 
 /**

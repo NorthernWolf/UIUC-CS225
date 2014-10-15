@@ -67,10 +67,13 @@ class gradientColorPicker : public colorPicker {
 		virtual RGBAPixel operator()( int x, int y );
 
 	private:
-		/** 
-		 * @todo Add any necessary private storage here! You may also add
-		 *	private helper functions as you see fit.
-		 */
+		//made some new private members
+		RGBAPixel color1;
+		RGBAPixel color2;
+		int r;
+		int center_x;
+		int center_y;
+
 };
 
 #endif

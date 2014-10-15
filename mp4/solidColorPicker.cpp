@@ -7,9 +7,8 @@
  */
 solidColorPicker::solidColorPicker(RGBAPixel fillColor)
 {
-	/**
-	 * @todo Initialize a new solidColorPicker here!
-	 */
+	//set color defined in .h file equal to fillColor
+	color = fillColor;
 }
 
 /**
@@ -20,9 +19,6 @@ solidColorPicker::solidColorPicker(RGBAPixel fillColor)
  */
 RGBAPixel solidColorPicker::operator()(int x, int y)
 {
-	/**
-	 * @todo Return the appropriate color here! You will have to replace
-	 *	the following line.
-	 */
-	return RGBAPixel();
+	//pretty basic here
+	return color;
 }

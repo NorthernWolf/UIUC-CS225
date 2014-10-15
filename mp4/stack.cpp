@@ -24,9 +24,9 @@ void Stack<T>::push(T const & newItem)
     {
         myStack.push_front(newItem); //found push front on the website lel
     }
-    else
+    //else
        // cout<< "The stack is full! Can't push!" <<endl;
-        return;
+        //return;
 }   
 
 /**
@@ -71,6 +71,8 @@ T Stack<T>::remove() {
     
     return pop();
 }
+
+
 
 /**
  * Finds the object on top of the Stack, and returns it to the caller.
