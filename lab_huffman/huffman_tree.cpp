@@ -69,17 +69,24 @@ HuffmanTree::TreeNode * HuffmanTree::copy( const TreeNode * current ) {
 HuffmanTree::TreeNode * HuffmanTree::removeSmallest( 
 		queue<TreeNode *> & singleQueue, queue<TreeNode *> & mergeQueue ) {
 
-	/**
-	 * @todo Your code here!
-	 *
-	 * Remove the smallest TreeNode * from the two queues given as
-	 * parameters. The entries on the queues are in sorted order, so the
-	 * smaller of the two queues heads is the smallest item in either of
-	 * the queues. Return this item after removing it from its queue.
-	 */
+	
 	TreeNode * smallest = NULL;
-	// your code!
-	return smallest;
+	//break ties by choosing from front of singleQueue
+	if((mergeQueue.empty() || mergeQueue.front()->freq.getFrequency() >= singleQueue.front()->freq.getFrequency()) &&!singleQueue.empty())
+	{
+		smallest = singleQueue.front(); //set smallest
+		//pop off smallest
+		singleQueue.pop();
+	}
+	else
+	{
+		smallest = mergeQueue.front();
+		//pop off smallest
+		mergeQueue.pop();
+
+	}
+
+	return smallest; //return the smallest value
 }
 
 void HuffmanTree::buildTree( const vector<Frequency> & frequencies ) {
@@ -103,6 +110,43 @@ void HuffmanTree::buildTree( const vector<Frequency> & frequencies ) {
 	 * Finally, when there is a single node left, it is the root. Assign it
 	 * to the root and you're done!
 	 */
+
+	 //populate singleQueue using a for loop
+
+	 for (auto i = frequencies.begin(); i < frequencies.end(); i++)
+	 {
+	 	TreeNode *leafNode = new TreeNode (*i);
+	 	singleQueue.push(leafNode);
+	 }
+
+	 while(singleQueue.size() + mergeQueue.size() >= 2)
+	 {
+	 	//pull the first two smallest elements
+	 	TreeNode * first = removeSmallest(singleQueue, mergeQueue);
+	 	TreeNode * second = removeSmallest(singleQueue, mergeQueue);
+	 	//make a new internal node which has frequency equal to the frequencies of its childern combined
+	 	TreeNode * internal = new TreeNode(first->freq.getFrequency() + second->freq.getFrequency());
+	 	internal->left = first;//left is the first smallest chosen so the smallest above
+	 	internal->right =  second;//right is the next smallest so the secod smallest chosen above
+	 	//now put this thing onto the megreQueue
+	 	mergeQueue.push(internal);
+
+	 }
+
+	//now set a root
+	//check if singleQueue empty or not and assign root appropriately
+	if(!singleQueue.empty())
+	{
+		root = singleQueue.front();
+	}
+	else if(singleQueue.empty())
+	{
+		root = mergeQueue.front();
+	}
+	 	
+
+
+
 }
 
 string HuffmanTree::decodeFile( BinaryFileReader & bfile ) {
@@ -125,6 +169,30 @@ void HuffmanTree::decode( stringstream & ss, BinaryFileReader & bfile ) {
 		 * character to the stringstream (with operator<<, just like cout)
 		 * and start traversing from the root node again.
 		 */
+
+		 TreeNode * currentNode = root; //initialize a new holder
+		 if(bfile.getNextBit() == 1)
+		 {
+		 	//go right for a 1
+		 	currentNode = currentNode->right;
+		 }
+		 else
+		 {
+		 	//go left if its a 0
+		 	currentNode = currentNode->left;
+		 }
+		 //special case: if we're at a leaf node
+
+		 if(currentNode->right == NULL && currentNode->left ==NULL)
+		 {
+
+
+		 		ss << currentNode->freq.getCharacter();
+ 		 		currentNode = root;//start traversing from root again
+		 }
+
+
+
 	}
 }
 
