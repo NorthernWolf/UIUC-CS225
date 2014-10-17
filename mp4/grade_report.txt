@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp4 at 2014-10-16 04:01:51
+Testing mp4 at 2014-10-17 04:12:15
 
-"Microsoft has a new version out, Windows XP, which according to everybody is the 'most reliable Windows ever.' To me, this is like saying that asparagus is 'the most articulate vegetable ever.'" ~ Dave Barry
+"It is practically impossible to teach good programming to students that have had a prior exposure to BASIC: as potential programmers they are mentally mutilated beyond hope of regeneration." ~ Edsger Dijkstra
 
 Setting up test environment...
 Compiling...
