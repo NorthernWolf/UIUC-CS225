@@ -160,7 +160,7 @@ animation filler::fill( PNG & img, int x, int y,
     OrderingStructure <int> xCordStuct;
     OrderingStructure <int> yCordStruct;
     bool hasBeenChanged[img.width()][img.height()]; //declare a boolean 2d array for true or false to know if image is done.  
-    //initialize the 2d array to fale
+    //initialize the 2d array to false
     for (int i = 0; i < img.width(); i++)
     {
         for (int j = 0; j < img.height(); j++)
@@ -225,11 +225,12 @@ animation filler::fill( PNG & img, int x, int y,
 
 
             k++;
-            if(k% frameFreq ==0) 
+            
+        }
+        if(k% frameFreq == 0) 
             {
                 gif.addFrame(img);
             }
-        }
     }
     return gif;
 }
