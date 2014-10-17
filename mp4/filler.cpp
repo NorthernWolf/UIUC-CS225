@@ -231,7 +231,7 @@ animation filler::fill( PNG & img, int x, int y,
 
 
     //now do animations stuff
-
+/*
     int k = 0;
 
     if(k% frameFreq ==0)
@@ -239,7 +239,7 @@ animation filler::fill( PNG & img, int x, int y,
         animation.addFrame(img);
     }
     k++;
-
+*/
 
 
 
