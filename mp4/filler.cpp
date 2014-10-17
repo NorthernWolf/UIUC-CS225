@@ -222,21 +222,14 @@ animation filler::fill( PNG & img, int x, int y,
                yCordStruct.add(holder2-1);
             }
 
-        }
-        
-        
 
-        
-        
-        k++;
-        if(k% frameFreq ==0) 
-        {
-            gif.addFrame(img);
-        }
-    
-        
 
+            k++;
+            if(k% frameFreq ==0) 
+            {
+                gif.addFrame(img);
+            }
+        }
     }
-
     return gif;
 }
