@@ -154,7 +154,7 @@ animation filler::fill( PNG & img, int x, int y,
      *        be filled every frame.
      */
 
-
+    RGBAPixel original = *img(x,y); //hold initial x,y value
     //declare ordering stuctures
     //one for x coordinate, one for y coordinate
     OrderingStructure <int> xCordStuct;
@@ -188,49 +188,59 @@ animation filler::fill( PNG & img, int x, int y,
 
 
         //helper function? naaaaahhhhhh
-        int newTolerance = (img(holder1, holder2)->red - img(x,y)->red)*(img(holder1, holder2)->red - img(x,y)->red)- (img(holder1, holder2)->green - img(x,y)->green)*(img(holder1, holder2)->green - img(x,y)->green) - (img(holder1, holder2)->blue - img(x,y)->blue)*(img(holder1, holder2)->blue - img(x,y)->blue);
-        hasBeenChanged[holder1][holder2] = true;
-        if(newTolerance <= tolerance && !hasBeenChanged[holder1][holder2] == true)
+       
+
+        int toleranceRed = ((img(holder1, holder2)->red - original.red)*(img(holder1, holder2)->red - original.red)) ;
+        int toleranceGreen = ((img(holder1, holder2)->green - original.green)*(img(holder1, holder2)->green - original.green));
+        int toleranceBlue = ((img(holder1, holder2)->blue - original.blue)*(img(holder1, holder2)->blue - original.blue));
+        int newTolerance = toleranceRed +toleranceGreen +toleranceBlue; 
+        //cout << newTolerance <<endl;
+        //cout <<tolerance <<endl;
+        if(newTolerance <= tolerance && hasBeenChanged[holder1][holder2] == false)
         {
 
 
             *img(holder1, holder2) = fillColor(holder1,holder2);
+
+            k++;
+            if(k% frameFreq == 0) 
+            {
+                gif.addFrame(img);
+            }
             
             //check element to the right
-            if(holder1+1 >= 0 && holder1+1 <= img.width()-1 && holder2 >=0 && holder2 <= img.height()-1 && hasBeenChanged[holder1+1][holder2] == false)
+            if((holder1+1) >= 0 && (holder1+1) <= (img.width()-1) && holder2 >=0 && holder2 <= (img.height()-1) && hasBeenChanged[holder1+1][holder2] == false)
             {
                 xCordStuct.add(holder1+1);
                 yCordStruct.add(holder2);
             }
 
-            //now check element to the left
-            if(holder1-1 >= 0 && holder1-1 <= img.width()-1 && holder2 >=0 && holder2 <= img.height()-1 && hasBeenChanged[holder1-1][holder2] == false)
-            {
-                xCordStuct.add(holder1-1);
-                yCordStruct.add(holder2);
-            }
-            //now check element above
-            if(holder1 >=0 && holder1 <= img.width()-1 && holder2+1 >=0 && holder2+1 <= img.height()-1 && hasBeenChanged[holder1][holder2+1] == false)
+             //now check element above
+            if(holder1 >=0 && holder1 <= (img.width()-1) && holder2+1 >=0 && holder2+1 <= (img.height()-1) && hasBeenChanged[holder1][holder2+1] == false)
             {
                 xCordStuct.add(holder1);
                 yCordStruct.add(holder2+1);
             }
+            //now check element to the left
+            if(holder1-1 >= 0 && holder1-1 <= (img.width()-1) && holder2 >=0 && holder2 <= (img.height()-1) && hasBeenChanged[holder1-1][holder2] == false)
+            {
+                xCordStuct.add(holder1-1);
+                yCordStruct.add(holder2);
+            }
+
             //now check element below
-            if(holder1 >=0 && holder1 <= img.width()-1 && holder2-1 >=0 && holder2-1 <= img.height()-1 && hasBeenChanged[holder1][holder2-1] == false)
+            if(holder1 >=0 && holder1 <= (img.width()-1) && holder2-1 >=0 && holder2-1 <= (img.height()-1) && hasBeenChanged[holder1][holder2-1] == false)
             {
                xCordStuct.add(holder1);
                yCordStruct.add(holder2-1);
-            }
+            }      
 
-
-
-            k++;
+            
+            
+            
             
         }
-        if(k% frameFreq == 0) 
-            {
-                gif.addFrame(img);
-            }
+          hasBeenChanged[holder1][holder2] = true;
     }
     return gif;
 }
