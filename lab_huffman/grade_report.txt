@@ -1,0 +1,28 @@
+Monad Autograder
+Testing lab_huffman at 2014-10-20 04:25:18
+
+"I've seen many balls. Actually, let's do an example without balls." ~ Jack Toole
+
+Setting up test environment...
+Compiling...
+================================================================
+huffman_tree.cpp:255:14: error: reference to non-static member function must be called; did you mean to call it with no arguments?
+        while(bfile.hasBits){
+              ~~~~~~^~~~~~~
+                           ()
+huffman_tree.cpp:256:2: error: expected expression
+        else if (bfile.getNextBit())//if we read a 1 bit
+        ^
+2 errors generated.
+make: *** [huffman_tree.o] Error 1
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
