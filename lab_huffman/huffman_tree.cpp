@@ -181,6 +181,7 @@ void HuffmanTree::decode( stringstream & ss, BinaryFileReader & bfile ) {
 		 	//go left if its a 0
 		 	currentNode = currentNode->left;
 		 }
+
 		 //special case: if we're at a leaf node
 		if (currentNode->right == NULL && currentNode->left ==NULL)
 		 {
@@ -250,6 +251,8 @@ HuffmanTree::TreeNode * HuffmanTree::readTree( BinaryFileReader & bfile ) {
 	{
 	 	TreeNode * node = NULL;
 	}
+
+	while(bfile.hasBits){
 	else if (bfile.getNextBit())//if we read a 1 bit
 	{
 	 	TreeNode * leafNode = new TreeNode(Frequency(bfile.getNextByte(),0));
@@ -265,7 +268,7 @@ HuffmanTree::TreeNode * HuffmanTree::readTree( BinaryFileReader & bfile ) {
 	 	
 
 	}
-	 	
+	} 	
 
 
 	//return node; // replaceme!
