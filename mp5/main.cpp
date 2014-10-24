@@ -5,6 +5,8 @@
 using std::cout;
 using std::endl;
 
+using namespace std;
+
 int main() {
 
    PNG imgIn, imgOut;
@@ -20,7 +22,7 @@ int main() {
    fullTree.buildTree(imgIn, 256);
 
    // you may want to experiment with different commands in this section
-
+/*
    // test pruneSize and idealPrune (slow in valgrind, so you may want to
    // comment these out when doing most of your testing for memory leaks)
    cout << "fullTree.pruneSize(0) = " << fullTree.pruneSize(0) << endl;
@@ -67,6 +69,6 @@ int main() {
    cout << "Printing tinyTree:\n";
    tinyTree.prune(100);
    tinyTree.printTree();
-
+*/
    return 0;
 }
