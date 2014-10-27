@@ -50,9 +50,16 @@ CommonWords::CommonWords(const vector<string>& filenames)
  */
 void CommonWords::init_common() 
 {
-    /* Your code goes here! */
-}
-
+    std::map<string, unsigned int > m;
+    //iterate through?
+    for (size_t i = 0; i < file_word_maps.size(); i++)
+    {
+       for( auto &key_val : file_word_maps[i])//use the special type of for loop?
+       {
+           common[key_val.first] = common[key_val.first]+1;//incrment if it shows up
+       }
+    }
+}    
 /**
  * Initializes file_word_maps, having each index hold a map going from the word 
  * seen in that file to the number of times the word has been seen
@@ -67,7 +74,12 @@ void CommonWords::init_file_word_maps(const vector<string>& filenames)
     for(size_t i = 0; i < filenames.size(); i++) {
         // get the corresponding vector of words that represents the current file
         vector<string> words = file_to_vector(filenames[i]);
-        /* Your code goes here! */
+        std::map<string, unsigned int> map; //create the new map
+        for (size_t j = 0; j < words.size(); j++)
+        {
+            map[words[j]] = map[words[j]]+1; //increment if we see the word again
+        }
+        file_word_maps[i] = map;//set filewordmaps equal to the the new map that was created above
     }
 }
 
@@ -79,11 +91,41 @@ void CommonWords::init_file_word_maps(const vector<string>& filenames)
  */
 vector< string > CommonWords::get_common_words(unsigned int n) const
 {
-    /* Your code goes here! */
-    vector<string> out;
-    return out;
-}
 
+    int counter = 0; //initialize a counter
+    vector<string> out;
+    std::map<string, unsigned int> map;
+
+    for(auto &this_string: common)//use common from prev function?
+    {   
+        counter = 0;
+        if(this_string.second == file_word_maps.size())//check if inside all the files
+        {
+            for (size_t i = 0; i<file_word_maps.size();i++)
+            {
+                    //map=file_word_maps[i]; <- takes too long~
+                    auto iterator = file_word_maps[i].find(this_string.first);
+                    if(iterator != file_word_maps[i].end())
+                    {
+
+                        if(iterator->second >=n)
+                        {//check the frequency is greater than input n
+                            counter+= 1;
+                            if(counter ==file_word_maps.size())
+                            {
+                                out.push_back(this_string.first);
+                            }    
+                        }
+                    }
+        
+            }
+        
+    }
+
+    
+}
+return out;
+}
 /**
  * Takes a filename and transforms it to a vector of all words in that file.
  * @param filename The name of the file that will fill the vector
