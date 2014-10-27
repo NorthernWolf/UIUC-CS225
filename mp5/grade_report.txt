@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp5 at 2014-10-26 15:21:49
+Testing mp5 at 2014-10-27 04:13:05
 
-"Fish are meat, they're like water poultry." ~ Chase Geigle
+"What is written without effort is, in general, read without pleasure." ~ Samuel Johnson
 
 Setting up test environment...
 Compiling...
