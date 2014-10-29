@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp5 at 2014-10-28 04:24:39
+Testing mp5 at 2014-10-29 04:37:07
 
-"I can calculate the motions of the heavenly bodies, but not the madness of people." ~ Isaac Newton
+"Be careful about using the following code -- I've only proven that it works, I haven't tested it." ~ Donald Knuth
 
 Setting up test environment...
 Compiling...
@@ -172,6 +172,9 @@ unit_tests.cpp:509:2: error: no matching function for call to 'assert_equals_hel
 inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
                    ^                                              ~
 6 errors generated.
+clang-3.5: error: no such file or directory: 'unit_tests.o'
+make: *** [proxy] Error 1
+make: *** Waiting for unfinished jobs....
 unit_tests.cpp:422:2: error: no matching function for call to 'assert_equals_help'
         ASSERT_EQUALS(0, first.pruneSize(13));
         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,9 +229,6 @@ unit_tests.cpp:509:2: error: no matching function for call to 'assert_equals_hel
 ./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
 inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
                    ^                                              ~
-clang-3.5: error: no such file or directory: 'unit_tests.o'
-make: *** [proxy] Error 1
-make: *** Waiting for unfinished jobs....
 6 errors generated.
 ld: no input files
 
