@@ -155,7 +155,7 @@ void Quadtree::buildTree_helperFunction(QuadtreeNode* node, int levels, PNG cons
 	node->swChild = new QuadtreeNode();
 	node->seChild = new QuadtreeNode();
 
-	//now make recursive call change min coordinates appropriately
+	//now make recursive call, change min coordinates appropriately
 	buildTree_helperFunction(node->nwChild, levels-1, source, x , y , new_res/2 );
 
 	buildTree_helperFunction(node->neChild, levels-1, source, x+(new_res/2) , y , new_res/2 );
@@ -198,22 +198,89 @@ RGBAPixel Quadtree::getPixel(int x, int y) const
 {
 	//get pixel function
 	return RGBAPixel();
+
+
+	//This functions returns an RGBAPixel from png.cpp
+	/*
+	RGBAPixel & PNG::_pixel(size_t x, size_t y) const
+	{
+	return _pixels[_width * y + x];
+	}
+
+*/
 }
 
 PNG Quadtree::decompress() const
 {
-	/*res = resolution;
-	PNG(res, res)*/
-	return PNG();//?
+	//res = resolution;
+	//PNG(res, res)
+	//int levels = log2(resolution); //level is log base 2 of the resolution they give us
+	//return decompress_helper(root, levels, source, 0,0, resolution);//?
 	//decompress function
+	return PNG();
 }
 
-/*
-PNG Quadtree::decompress_helper()
+
+PNG Quadtree::decompress_helper(QuadtreeNode* node, int levels, PNG const &source, int x, int y, int resolution)
 {
+/*
+	if(root == NULL) //if tree is empty, return default PNG()
+	{
+		return PNG();
+	}
+	//Like build tree but opposite? ... maybe recurse all the way down to the bottom and return the color at each level
+	//or return the color at the leaf level?
+	if(levels==0){
+		node->element = *(source(x,y));//why source here? .. but how else?
+		//make the element (the date of node) equal to operator(x,y) on source
+		return node->element;
+	}
+*/	
+	/*
+	I don't think I need to make new quadtree nodes here.. but how do I call the childrn in the decompress helper?
+	node->nwChild = new QuadtreeNode();
+	node->neChild = new QuadtreeNode();
+	node->swChild = new QuadtreeNode();
+	node->seChild = new QuadtreeNode();
+	*/
+	//now make recursive call, change min coordinates appropriately
+/*
+	decompress_helper(node->nwChild, levels-1, source, x , y , new_res/2 );
 
+	decompress_helper(node->neChild, levels-1, source, x+(new_res/2) , y , new_res/2 );
 
-return PNG();
-}
+	decompress_helper(node->swChild, levels-1, source, x , y +(new_res/2), new_res/2 );
+
+	decompress_helper(node->seChild, levels-1, source, x +(new_res/2) , y +(new_res/2), new_res/2 );
 
 */
+
+	return PNG();
+	
+}
+
+
+
+void Quadtree::clockwiseRotate()
+{
+	return;
+}
+
+//compresses the image this quadtree represents
+void Quadtree::prune (int toleratnce)
+{
+	return;
+}
+
+//this function is similar to prune, however, it does not actually prune the quadtree
+int Quadtree::pruneSize(int tolerance) const
+{
+	return 0;
+}
+
+//calculates and returns the minimum tolerance necessary to guarantee that upon pruning the tree, no more than numLeaves leaves remain in the quadtree
+int Quadtree::idealPrune(int numLeaves) const
+{
+	return 0;
+}
+

@@ -53,7 +53,7 @@ class Quadtree
 		void prune (int toleratnce);
 
 		//this function is similar to prune, however, it does not actually prune the quadtree
-		void pruneSize(int tolerance) const;
+		int pruneSize(int tolerance) const;
 
 		//calculates and returns the minimum tolerance necessary to guarantee that upon pruning the tree, no more than numLeaves leaves remain in the quadtree
 		int idealPrune(int numLeaves) const;
@@ -69,7 +69,7 @@ class Quadtree
 		//gets the RGBAPixel corresponding to the pixel at the coordinates (x,y) in the bitmap image which the quadtree represents
 		RGBAPixel getPixel(int x_Value, int y_value, int resolution);
 
-
+		bool operator==(Quadtree const & other) const;
 		
 
 	
@@ -114,6 +114,10 @@ class Quadtree
 
 	//helper for helper function
 	void clear_helper_function(QuadtreeNode * &node);
+
+
+	//decompress helper function
+	PNG decompress_helper(QuadtreeNode* node, int levels, PNG const &source, int x, int y, int new_res);
 
 	int res; //something to hold the resolution of the tree
 
