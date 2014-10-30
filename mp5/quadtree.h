@@ -105,21 +105,30 @@ class Quadtree
 	};
 	
 	QuadtreeNode* root;    // pointer to root of quadtree
+	int res; //holder for resolution
 	
 	//build tree helper
 	void buildTree_helperFunction(QuadtreeNode* node, int levels, PNG const &source, int x, int y, int new_res);
 
 	//helper for copy helper
-	QuadtreeNode* copy_helper(QuadtreeNode* other);
+	QuadtreeNode* copy_helper(QuadtreeNode* &thisNode, QuadtreeNode* other);
 
 	//helper for helper function
 	void clear_helper_function(QuadtreeNode * &node);
 
 
 	//decompress helper function
-	PNG decompress_helper(QuadtreeNode* node, int levels, PNG const &source, int x, int y, int new_res);
+	void decompress_helper(QuadtreeNode* node, PNG &source, int x, int y, int new_res) const;
 
-	int res; //something to hold the resolution of the tree
+
+	//get pixel helper function
+	RGBAPixel getPixel_helper(QuadtreeNode *node, int x, int y, int resolution) const;
+	//int res; //something to hold the resolution of the tree
+
+
+	//helper for clockwise rotate
+	void helper_clockwiseRotate(QuadtreeNode * node);
+
 
 	/**** Functions added for testing/grading                ****/
 	/**** Do not remove this line or copy its contents here! ****/

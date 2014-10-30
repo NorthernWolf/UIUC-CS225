@@ -53,7 +53,7 @@ Quadtree::~Quadtree() //destructor
 void Quadtree::clear() //helper clear function ... definitely need to check this one!
 {
 	clear_helper_function(root);
-
+	res = 0;
 
 }
 
@@ -81,56 +81,62 @@ void Quadtree::clear_helper_function(QuadtreeNode * & node)
 Quadtree::Quadtree()
 {
 	root = NULL;
+	res = 0;
 	//default constructor
 	//nothing goes here
 }
 
 Quadtree::Quadtree(const PNG &source, int resolution)
 {
-	
+	root = NULL;
 	buildTree(source, resolution);//define new root node accoring to constructor I built
 }
 
 Quadtree::Quadtree(Quadtree const &other)
 {
+	if(other.root == NULL){
+		root = NULL;
+		return;
+	}
 	copy(other);
-	
+	res = other.res;
 }
 
 
 void Quadtree::copy(Quadtree const &other)
 {
-	copy_helper(other.root);
+	copy_helper(root, other.root);
+	res = other.res;
 }
 
-Quadtree::QuadtreeNode* Quadtree::copy_helper(QuadtreeNode* other)
+Quadtree::QuadtreeNode* Quadtree::copy_helper(QuadtreeNode* &thisNode, QuadtreeNode* other)
 {
 	if (other == NULL)
         return NULL;
 
     // Copy this node and it's children    
-    QuadtreeNode * newNode = new QuadtreeNode(other->element);
-    newNode->swChild  = copy_helper(other->swChild);
-    newNode->seChild = copy_helper(other->seChild);
-    newNode->nwChild  = copy_helper(other->nwChild );
-    newNode->neChild = copy_helper(other->neChild);
+    thisNode = new QuadtreeNode(other->element);
+    thisNode->swChild  = copy_helper(thisNode->swChild, other->swChild);
+    thisNode->seChild = copy_helper(thisNode->seChild, other->seChild);
+    thisNode->nwChild  = copy_helper(thisNode->nwChild, other->nwChild );
+    thisNode->neChild = copy_helper(thisNode->neChild, other->neChild);
 
-    return newNode;
+    return thisNode;
 }
 
 Quadtree const & Quadtree::operator=(Quadtree const &other)
 {
-
-	clear_helper_function(root);//clear yourself
-	copy(other);//copy other's stuff into you
+	if(this != &other){
+		clear();
+		copy(other);
+	}
 	return *this;//now return yourself
-
 }
 
 void Quadtree::buildTree(PNG const &source, int  resolution)
 {
 	root = new QuadtreeNode();//create the root node
-
+	res = resolution;
 	int levels = log2(resolution); //level is log base 2 of the resolution they give us
 	buildTree_helperFunction(root, levels, source, 0, 0, resolution);
 	//levels is number of times we want to recurse down
@@ -148,7 +154,6 @@ void Quadtree::buildTree_helperFunction(QuadtreeNode* node, int levels, PNG cons
 		//make the element (the date of node) equal to operator(x,y) on source
 		return;
 	}
-	
 	//create new nodes for the chilren
 	node->nwChild = new QuadtreeNode();
 	node->neChild = new QuadtreeNode();
@@ -196,75 +201,141 @@ void Quadtree::buildTree_helperFunction(QuadtreeNode* node, int levels, PNG cons
 
 RGBAPixel Quadtree::getPixel(int x, int y) const
 {
-	//get pixel function
-	return RGBAPixel();
+	
+	return getPixel_helper(root, x, y, res);
 
-
-	//This functions returns an RGBAPixel from png.cpp
-	/*
-	RGBAPixel & PNG::_pixel(size_t x, size_t y) const
-	{
-	return _pixels[_width * y + x];
-	}
-
-*/
 }
+
+
+RGBAPixel Quadtree::getPixel_helper(QuadtreeNode *node, int x, int y, int resolution) const
+{
+	if(root==NULL)
+		return RGBAPixel();//if its an empty tree, return default RBGAPixel constructor
+
+
+	
+		//check quadrant
+
+		if(x< resolution/2 && y <resolution/2 && node->nwChild != NULL) //has one or all 4 children so check one NW
+		{
+			return getPixel_helper(node->nwChild, x,  y, resolution/2);
+		}
+
+		else if(x>=resolution/2 && y >= resolution/2 && node->nwChild != NULL)//SE
+		{
+			return getPixel_helper(node->seChild, x-(resolution/2),  y-(resolution/2), resolution/2);
+		}
+
+		else if(x<resolution/2 && y>= resolution/2 && node->nwChild != NULL) //SW
+		{
+			return getPixel_helper(node->swChild, x,  y-(resolution/2), resolution/2);
+		}
+
+		else if (x>=resolution/2 && y< resolution/2 && node->nwChild != NULL) //NE
+		{
+			return getPixel_helper(node->neChild, x-(resolution/2),  y, resolution/2);
+		}
+
+		else
+			return node->element;//were where we cant to be! return the element
+
+		
+}
+
+
 
 PNG Quadtree::decompress() const
 {
-	//res = resolution;
-	//PNG(res, res)
-	//int levels = log2(resolution); //level is log base 2 of the resolution they give us
-	//return decompress_helper(root, levels, source, 0,0, resolution);//?
-	//decompress function
-	return PNG();
-}
-
-
-PNG Quadtree::decompress_helper(QuadtreeNode* node, int levels, PNG const &source, int x, int y, int resolution)
-{
-/*
 	if(root == NULL) //if tree is empty, return default PNG()
 	{
 		return PNG();
 	}
+
+	PNG source = PNG(res, res); //create a new PNG
+		//res = resolution;
+	//PNG(res, res)
+	//int levels = log2(resolution); //level is log base 2 of the resolution they give us
+	//return decompress_helper(root, levels, source, 0,0, resolution);//?
+	//decompress function
+	decompress_helper(root, source, 0,0, res);
+	return source;
+}
+
+
+void Quadtree::decompress_helper(QuadtreeNode* node, PNG &source, int x, int y, int new_res) const
+{
+
+	if(node == NULL) //if tree is empty, return default PNG()
+	{
+		return;
+	}
+
+
+
 	//Like build tree but opposite? ... maybe recurse all the way down to the bottom and return the color at each level
 	//or return the color at the leaf level?
-	if(levels==0){
-		node->element = *(source(x,y));//why source here? .. but how else?
-		//make the element (the date of node) equal to operator(x,y) on source
-		return node->element;
-	}
-*/	
-	/*
-	I don't think I need to make new quadtree nodes here.. but how do I call the childrn in the decompress helper?
-	node->nwChild = new QuadtreeNode();
-	node->neChild = new QuadtreeNode();
-	node->swChild = new QuadtreeNode();
-	node->seChild = new QuadtreeNode();
-	*/
-	//now make recursive call, change min coordinates appropriately
-/*
-	decompress_helper(node->nwChild, levels-1, source, x , y , new_res/2 );
-
-	decompress_helper(node->neChild, levels-1, source, x+(new_res/2) , y , new_res/2 );
-
-	decompress_helper(node->swChild, levels-1, source, x , y +(new_res/2), new_res/2 );
-
-	decompress_helper(node->seChild, levels-1, source, x +(new_res/2) , y +(new_res/2), new_res/2 );
-
-*/
-
-	return PNG();
 	
+
+
+	if(node->nwChild == NULL){// quadtree has zero children or all 4 so only need to check one
+		//were at a leafe lets populate this things node
+		for(int i = x ; i<x+new_res; i++){
+			for(int j = y; j<y+new_res; j++){
+				*(source(i,j)) = node->element;
+			}
+		}
+		
+	}
+	
+	
+	//now make recursive call, go all the way to the bottom
+
+	decompress_helper(node->nwChild, source, x , y , new_res/2 );
+
+	decompress_helper(node->neChild, source, x+(new_res/2) , y , new_res/2 );
+
+	decompress_helper(node->swChild, source, x , y +(new_res/2), new_res/2 );
+
+	decompress_helper(node->seChild, source, x +(new_res/2) , y +(new_res/2), new_res/2 );
+
 }
 
 
 
 void Quadtree::clockwiseRotate()
 {
-	return;
+	helper_clockwiseRotate(root);
 }
+
+void Quadtree::helper_clockwiseRotate(QuadtreeNode * node)
+{
+
+	if(node == NULL) return;
+
+//recurse all the way down
+
+	helper_clockwiseRotate(node->nwChild);
+	helper_clockwiseRotate(node->neChild);
+	helper_clockwiseRotate(node->swChild);
+	helper_clockwiseRotate(node->seChild);
+
+	//and now we just make a swap
+	QuadtreeNode * nwHolder = node->nwChild;
+	QuadtreeNode * neHolder = node->neChild;
+	QuadtreeNode * swHolder = node->swChild;
+	QuadtreeNode * seHolder = node->seChild;
+
+
+	//make rotation
+	node->nwChild = swHolder;
+	node->neChild = nwHolder;
+	node->seChild = neHolder;
+	node->swChild = seHolder;
+
+
+
+}
+
 
 //compresses the image this quadtree represents
 void Quadtree::prune (int toleratnce)
