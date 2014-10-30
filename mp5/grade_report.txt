@@ -1,244 +1,67 @@
 Monad Autograder
-Testing mp5 at 2014-10-29 04:37:07
+Testing mp5 at 2014-10-30 04:12:48
 
-"Be careful about using the following code -- I've only proven that it works, I haven't tested it." ~ Donald Knuth
+"(reading a password) Uppercase 0... [...] Lowercase 0..." ~ Sean Massung
 
 Setting up test environment...
 Compiling...
 ================================================================
-unit_tests.cpp:422:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(0, first.pruneSize(13));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:429:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(4, first.pruneSize(1));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:436:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1, first.pruneSize(200000));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:443:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1, first.pruneSize(0));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:450:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(37324, first.pruneSize(1000));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:509:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1000, first->pruneSize(first->idealPrune(1000)));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-6 errors generated.
-unit_tests.cpp:422:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(0, first.pruneSize(13));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:429:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(4, first.pruneSize(1));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:436:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1, first.pruneSize(200000));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:443:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1, first.pruneSize(0));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:450:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(37324, first.pruneSize(1000));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:509:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1000, first->pruneSize(first->idealPrune(1000)));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-6 errors generated.
-ld: no input files
-unit_tests.cpp:422:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(0, first.pruneSize(13));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:429:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(4, first.pruneSize(1));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:436:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1, first.pruneSize(200000));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:443:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1, first.pruneSize(0));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:450:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(37324, first.pruneSize(1000));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:509:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1000, first->pruneSize(first->idealPrune(1000)));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-6 errors generated.
-clang-3.5: error: no such file or directory: 'unit_tests.o'
-make: *** [proxy] Error 1
-make: *** Waiting for unfinished jobs....
-unit_tests.cpp:422:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(0, first.pruneSize(13));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:429:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(4, first.pruneSize(1));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:436:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1, first.pruneSize(200000));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:443:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1, first.pruneSize(0));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:450:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(37324, first.pruneSize(1000));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-unit_tests.cpp:509:2: error: no matching function for call to 'assert_equals_help'
-        ASSERT_EQUALS(1000, first->pruneSize(first->idealPrune(1000)));
-        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:318:26: note: expanded from macro 'ASSERT_EQUALS'
-                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
-                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
-./proxy.h:303:20: note: candidate template ignored: substitution failure [with T = int, K = void]: cannot form a reference to 'void'
-inline std::string assert_equals_help(const T & expected, const K & actual, const char * expstr, const char * actstr)
-                   ^                                              ~
-6 errors generated.
-ld: no input files
 
 
 Running tests...
 ================================================================
-Could not execute test cases
+test_default_ctor  . . . . [1 pts] - passed
+test_ctor_1  . . . . . . . [1 pts] - passed
+test_ctor_2  . . . . . . . [2 pts] - passed
+test_buildTree_1 . . . . . [2 pts] - passed
+test_buildTree_2 . . . . . [1 pts] - passed
+test_buildTree_3 . . . . . [2 pts] - passed
+test_cctor_1 . . . . . . . [1 pts] - FAILED
+test_cctor_2 . . . . . . . [1 pts] - FAILED
+test_cctor_3 . . . . . . . [1 pts] - FAILED
+test_cctor_4 . . . . . . . [1 pts] - FAILED
+test_assign_op_1 . . . . . [1 pts] - passed
+test_assign_op_2 . . . . . [1 pts] - FAILED
+test_assign_op_3 . . . . . [1 pts] - FAILED
+test_assign_op_4 . . . . . [1 pts] - FAILED
+test_getPixel_1  . . . . . [1 pts] - FAILED
+test_getPixel_2  . . . . . [2 pts] - FAILED
+test_getPixel_3  . . . . . [2 pts] - FAILED
+test_getPixel_4  . . . . . [2 pts] - FAILED
+test_decompress_unpruned_1 [1 pts] - FAILED
+test_decompress_unpruned_2 [1 pts] - FAILED
+test_decompress_unpruned_3 [1 pts] - FAILED
+test_decompress_unpruned_4 [1 pts] - FAILED
+time_getPixel_logn . . . . [4 pts] - passed
+time_decompress_n (asan) . [4 pts] - passed
+valgrind_big3 (asan) . . . [4 pts] - FAILED
+test_clockwiseRotate_1 . . [1 pts] - passed
+test_clockwiseRotate_2 . . [1 pts] - FAILED
+test_clockwiseRotate_3 . . [2 pts] - FAILED
+test_clockwiseRotate_4 . . [2 pts] - FAILED
+test_prune_1 . . . . . . . [2 pts] - passed
+test_prune_2 . . . . . . . [3 pts] - FAILED
+test_prune_3 . . . . . . . [2 pts] - FAILED
+test_prune_4 . . . . . . . [5 pts] - FAILED
+test_prune_copy  . . . . . [2 pts] - FAILED
+test_prune_rotate  . . . . [2 pts] - FAILED
+test_prune_getPixel  . . . [3 pts] - FAILED
+test_pruneSize_1 . . . . . [2 pts] - passed
+test_pruneSize_2 . . . . . [2 pts] - FAILED
+test_pruneSize_3 . . . . . [2 pts] - FAILED
+test_pruneSize_4 . . . . . [2 pts] - FAILED
+test_pruneSize_5 . . . . . [2 pts] - FAILED
+test_idealPrune_1  . . . . [2 pts] - FAILED
+test_idealPrune_2  . . . . [3 pts] - FAILED
+test_idealPrune_3  . . . . [2 pts] - passed
+test_idealPrune_4  . . . . [5 pts] - FAILED
+val_clockwiseRotate (asan) [2 pts] - FAILED
+val_prune (asan) . . . . . [4 pts] - FAILED
+val_idealPrune (asan)  . . [3 pts] - FAILED
+test_const_correctness . . [4 pts] - passed
 
 
 Total score...
 ================================================================
-TOTAL SCORE: 0
+TOTAL SCORE: 29
 
