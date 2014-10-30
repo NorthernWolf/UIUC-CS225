@@ -69,7 +69,7 @@ class Quadtree
 		//gets the RGBAPixel corresponding to the pixel at the coordinates (x,y) in the bitmap image which the quadtree represents
 		RGBAPixel getPixel(int x_Value, int y_value, int resolution);
 
-		bool operator==(Quadtree const & other) const;
+		//bool operator==(Quadtree const & other) const;
 		
 
 	
