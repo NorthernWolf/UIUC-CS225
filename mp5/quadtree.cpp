@@ -341,6 +341,51 @@ void Quadtree::helper_clockwiseRotate(QuadtreeNode * node)
 void Quadtree::prune (int toleratnce)
 {
 	return;
+	//prune_helper(tolerance, root);
+}
+
+void Quadtree::prune_helper(int tolerance, QuadtreeNode * node)
+{
+	/*
+	recurse_to_bottom(node, node);
+
+	if(tolerance < allowable)
+	{
+		
+	}
+	*/
+}
+int Quadtree::allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2)
+{
+		int r1 = node1->element.red;
+		int g1 = node1->element.green;
+		int b1 = node1->element.blue;
+
+		int r2 = node2->element.red;
+		int g2 = node2->element.green;
+		int b2 = node2->element.blue;;
+
+		int allowable = (r2-r1)*(r2-r1) + (g2-g1)*(g2-g1) + (b2-b1)*(b2-b1);
+
+		return allowable; 
+
+}
+
+int Quadtree::recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node)
+{	
+/*
+	if (node->nwChild == NULL){
+		//allowable_calculation(origNode, node);
+		return allowable_calculation(origNode, node);
+	}
+
+	recurse_to_bottom(origNode, node->nwChild);
+	recurse_to_bottom(origNode, node->neChild);
+	recurse_to_bottom(origNode, node->swChild);
+	recurse_to_bottom(origNode, node->seChild);
+
+*/
+	return 0;
 }
 
 //this function is similar to prune, however, it does not actually prune the quadtree

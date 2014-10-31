@@ -129,6 +129,15 @@ class Quadtree
 	//helper for clockwise rotate
 	void helper_clockwiseRotate(QuadtreeNode * node);
 
+	//prune helper function
+	void prune_helper(int tolerance, QuadtreeNode * node);
+
+	//allowable helper function
+	int allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2);
+
+	//recurse down helper function
+	int recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node);
+
 
 	/**** Functions added for testing/grading                ****/
 	/**** Do not remove this line or copy its contents here! ****/
