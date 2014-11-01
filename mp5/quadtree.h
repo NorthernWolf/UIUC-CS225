@@ -136,7 +136,7 @@ class Quadtree
 	int allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2);
 
 	//recurse down helper function
-	int recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node);
+	bool recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node, int tolerance);
 
 
 	/**** Functions added for testing/grading                ****/

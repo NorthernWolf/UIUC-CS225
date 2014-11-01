@@ -25,13 +25,13 @@ int main() {
 
    // test pruneSize and idealPrune (slow in valgrind, so you may want to
    // comment these out when doing most of your testing for memory leaks)
-   // cout << "fullTree.pruneSize(0) = " << fullTree.pruneSize(0) << endl;
-   // cout << "fullTree.pruneSize(100) = " << fullTree.pruneSize(100) << endl;
-   // cout << "fullTree.pruneSize(1000) = " << fullTree.pruneSize(1000) << endl;
-   // cout << "fullTree.pruneSize(100000) = " << fullTree.pruneSize(100000) << endl;
+   cout << "fullTree.pruneSize(0) = " << fullTree.pruneSize(0) << endl;
+   cout << "fullTree.pruneSize(100) = " << fullTree.pruneSize(100) << endl;
+   cout << "fullTree.pruneSize(1000) = " << fullTree.pruneSize(1000) << endl;
+   cout << "fullTree.pruneSize(100000) = " << fullTree.pruneSize(100000) << endl;
 
-   // cout << "fullTree.idealPrune(1000) = "  << fullTree.idealPrune(1000) << endl;
-   // cout << "fullTree.idealPrune(10000) = " << fullTree.idealPrune(10000) << endl;
+   cout << "fullTree.idealPrune(1000) = "  << fullTree.idealPrune(1000) << endl;
+   cout << "fullTree.idealPrune(10000) = " << fullTree.idealPrune(10000) << endl;
 
 
    // Test some creation/deletion functions
@@ -51,28 +51,28 @@ int main() {
    cout << "4" << endl;
 
 
-   // test prune
-   // fullTree = fullTree2;
-   // fullTree.prune(1000);
-   // imgOut = fullTree.decompress();
-   // imgOut.writeToFile("outPruned.png");
+   //test prune
+   fullTree = fullTree2;
+   fullTree.prune(1000);
+   imgOut = fullTree.decompress();
+   imgOut.writeToFile("outPruned.png");
 
 
-   // // test several functions in succession
-   // Quadtree fullTree3(fullTree2);
-   // fullTree3.clockwiseRotate();
-   // fullTree3.prune(10000);
-   // fullTree3.clockwiseRotate();
-   // fullTree3.clockwiseRotate();
-   // fullTree3.clockwiseRotate();
-   // imgOut = fullTree3.decompress();
-   // imgOut.writeToFile("outEtc.png");
+   // test several functions in succession
+   Quadtree fullTree3(fullTree2);
+   fullTree3.clockwiseRotate();
+   fullTree3.prune(10000);
+   fullTree3.clockwiseRotate();
+   fullTree3.clockwiseRotate();
+   fullTree3.clockwiseRotate();
+   imgOut = fullTree3.decompress();
+   imgOut.writeToFile("outEtc.png");
 
-   // // ensure that printTree still works
-   // Quadtree tinyTree(imgIn, 32);
-   // cout << "Printing tinyTree:\n";
-   // tinyTree.prune(100);
-   // tinyTree.printTree();
+   // ensure that printTree still works
+   Quadtree tinyTree(imgIn, 32);
+   cout << "Printing tinyTree:\n";
+   tinyTree.prune(100);
+   tinyTree.printTree();
    cout << "5" << endl;
    return 0;
 }

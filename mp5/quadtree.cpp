@@ -338,22 +338,38 @@ void Quadtree::helper_clockwiseRotate(QuadtreeNode * node)
 
 
 //compresses the image this quadtree represents
-void Quadtree::prune (int toleratnce)
+void Quadtree::prune (int tolerance)
 {
-	return;
-	//prune_helper(tolerance, root);
+	prune_helper(tolerance, root);//call the prune_helper on the whole tree (so start at node root)
 }
 
 void Quadtree::prune_helper(int tolerance, QuadtreeNode * node)
 {
-	/*
-	recurse_to_bottom(node, node);
-
-	if(tolerance < allowable)
+	// touch every node and check the leaves -- recurse_to_bottom
+	// if tolerance met, clear tree
+	// if not, the prune_helper on nodes 4 children
+	if(recurse_to_bottom(node, node, tolerance)) //if we get a true
 	{
-		
+
+		//prune it! (clear all the children)
+		clear_helper_function(node->nwChild);
+		clear_helper_function(node->neChild);
+		clear_helper_function(node->swChild);
+		clear_helper_function(node->seChild);
+
 	}
-	*/
+	else
+	{
+		//otherwise, recursively call prune helper on all its children!
+		prune_helper(tolerance, node->nwChild);
+		prune_helper(tolerance, node->neChild);
+		prune_helper(tolerance, node->swChild);
+		prune_helper(tolerance, node->seChild);
+	
+
+
+	}
+		
 }
 int Quadtree::allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2)
 {
@@ -371,21 +387,22 @@ int Quadtree::allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2)
 
 }
 
-int Quadtree::recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node)
-{	
-/*
+bool Quadtree::recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node, int tolerance)
+{
+
 	if (node->nwChild == NULL){
 		//allowable_calculation(origNode, node);
-		return allowable_calculation(origNode, node);
+		int tol = allowable_calculation(origNode, node);
+		if (tol <= tolerance) 
+			return true;
+		else 
+			return false;
 	}
 
-	recurse_to_bottom(origNode, node->nwChild);
-	recurse_to_bottom(origNode, node->neChild);
-	recurse_to_bottom(origNode, node->swChild);
-	recurse_to_bottom(origNode, node->seChild);
+	return recurse_to_bottom(origNode, node->nwChild, tolerance) && recurse_to_bottom(origNode, node->neChild, tolerance)
+			&& recurse_to_bottom(origNode, node->swChild, tolerance) && recurse_to_bottom(origNode, node->seChild, tolerance);
+	//if all these return true, then prune the tree
 
-*/
-	return 0;
 }
 
 //this function is similar to prune, however, it does not actually prune the quadtree
