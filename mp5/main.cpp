@@ -30,8 +30,8 @@ int main() {
    cout << "fullTree.pruneSize(1000) = " << fullTree.pruneSize(1000) << endl;
    cout << "fullTree.pruneSize(100000) = " << fullTree.pruneSize(100000) << endl;
 
-   cout << "fullTree.idealPrune(1000) = "  << fullTree.idealPrune(1000) << endl;
-   cout << "fullTree.idealPrune(10000) = " << fullTree.idealPrune(10000) << endl;
+   // cout << "fullTree.idealPrune(1000) = "  << fullTree.idealPrune(1000) << endl;
+   // cout << "fullTree.idealPrune(10000) = " << fullTree.idealPrune(10000) << endl;
 
 
    // Test some creation/deletion functions

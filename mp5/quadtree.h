@@ -133,10 +133,17 @@ class Quadtree
 	void prune_helper(int tolerance, QuadtreeNode * node);
 
 	//allowable helper function
-	int allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2);
+	int allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2) const;
 
 	//recurse down helper function
-	bool recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node, int tolerance);
+	bool recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node, int tolerance) const;
+
+	//count number leaves helper function
+	int count_num_leaves(QuadtreeNode * node) const;
+
+
+	//prune size helper
+	int pruneSize_helper(int tolerance, QuadtreeNode * node) const; 
 
 
 	/**** Functions added for testing/grading                ****/

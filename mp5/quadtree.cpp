@@ -345,6 +345,10 @@ void Quadtree::prune (int tolerance)
 
 void Quadtree::prune_helper(int tolerance, QuadtreeNode * node)
 {
+
+	if(node->nwChild == NULL)
+		return;
+
 	// touch every node and check the leaves -- recurse_to_bottom
 	// if tolerance met, clear tree
 	// if not, the prune_helper on nodes 4 children
@@ -371,7 +375,7 @@ void Quadtree::prune_helper(int tolerance, QuadtreeNode * node)
 	}
 		
 }
-int Quadtree::allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2)
+int Quadtree::allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2) const
 {
 		int r1 = node1->element.red;
 		int g1 = node1->element.green;
@@ -387,7 +391,7 @@ int Quadtree::allowable_calculation(QuadtreeNode * node1, QuadtreeNode * node2)
 
 }
 
-bool Quadtree::recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node, int tolerance)
+bool Quadtree::recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node, int tolerance) const
 {
 
 	if (node->nwChild == NULL){
@@ -408,8 +412,67 @@ bool Quadtree::recurse_to_bottom(QuadtreeNode* origNode, QuadtreeNode * node, in
 //this function is similar to prune, however, it does not actually prune the quadtree
 int Quadtree::pruneSize(int tolerance) const
 {
-	return 0;
+	return  count_num_leaves(root) - pruneSize_helper(tolerance, root);
+	//return the total number of leaves minus the number that will be pruned
 }
+
+int Quadtree::count_num_leaves(QuadtreeNode * node) const
+{
+	if(node->nwChild==NULL)//if were at the leaves 
+		return 1; //increment "coutner"
+
+	
+	return//recursive calls for all the nodes
+	count_num_leaves(node->nwChild)+
+	count_num_leaves(node->neChild)+
+	count_num_leaves(node->swChild)+
+	count_num_leaves(node->seChild);	
+		
+}
+
+int Quadtree::pruneSize_helper(int tolerance, QuadtreeNode * node) const
+{	
+
+	if(node->nwChild == NULL)
+		return 0;
+
+
+
+	// literally copied in prune_helper and changed a few things
+	//and added the return values
+
+	// touch every node and check the leaves -- recurse_to_bottom
+	// if tolerance met, clear tree
+	// if not, the prune_helper on nodes 4 children
+	if(recurse_to_bottom(node, node, tolerance)) //if we get a true
+	{
+
+		return//instead of clearing like in prune, we just need to get the number of leaves so use that thing's helper
+		count_num_leaves(node->nwChild)+
+		count_num_leaves(node->neChild)+
+		count_num_leaves(node->swChild)+
+		count_num_leaves(node->seChild)-1;
+		
+
+	}
+	else
+	{
+		return //otherwise, recursively call prune helper on all its children!
+		pruneSize_helper(tolerance, node->nwChild)+
+		pruneSize_helper(tolerance, node->neChild)+
+		pruneSize_helper(tolerance, node->swChild)+
+		pruneSize_helper(tolerance, node->seChild);
+		
+	
+
+
+	}
+
+
+}
+
+
+
 
 //calculates and returns the minimum tolerance necessary to guarantee that upon pruning the tree, no more than numLeaves leaves remain in the quadtree
 int Quadtree::idealPrune(int numLeaves) const
