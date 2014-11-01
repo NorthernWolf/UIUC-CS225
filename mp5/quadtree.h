@@ -145,6 +145,9 @@ class Quadtree
 	//prune size helper
 	int pruneSize_helper(int tolerance, QuadtreeNode * node) const; 
 
+	int idealPrune_helper(int numLeaves, int tol_low, int tol_high) const;
+
+
 
 	/**** Functions added for testing/grading                ****/
 	/**** Do not remove this line or copy its contents here! ****/

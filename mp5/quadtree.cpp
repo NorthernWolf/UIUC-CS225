@@ -477,6 +477,32 @@ int Quadtree::pruneSize_helper(int tolerance, QuadtreeNode * node) const
 //calculates and returns the minimum tolerance necessary to guarantee that upon pruning the tree, no more than numLeaves leaves remain in the quadtree
 int Quadtree::idealPrune(int numLeaves) const
 {
-	return 0;
+	return idealPrune_helper(numLeaves, 0, 3*255*255);
+}
+ 
+int Quadtree::idealPrune_helper(int numLeaves, int tol_low, int tol_high) const
+{
+	//do a binary search. give this thing inputs tolerance low and tolerance high 
+	int mid = (tol_low + tol_high)/2;
+	int pSize =  pruneSize(mid);
+
+	if (numLeaves < pSize)
+		return idealPrune_helper(numLeaves, mid + 1, tol_high); //check upper half of range
+
+	else if(numLeaves > pSize)
+		return idealPrune_helper(numLeaves, tol_low, mid - 1); //check lower half of range
+
+	else//numLeaves === pSize
+		//caviot case.. we need to get the MIN tolerance
+	{
+		if(pruneSize(mid - 1) == pSize)//check to see if values exist to the left, if there are, then lets recursively call idealPrune_helper again
+		{
+			return idealPrune_helper(numLeaves, tol_low, mid - 1); //check lower half of range
+		}
+		else //else we have what we want and just return the mid
+		{
+			return mid;
+		}
+	}
 }
 

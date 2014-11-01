@@ -26,12 +26,20 @@ int main() {
    // test pruneSize and idealPrune (slow in valgrind, so you may want to
    // comment these out when doing most of your testing for memory leaks)
    cout << "fullTree.pruneSize(0) = " << fullTree.pruneSize(0) << endl;
+   cout << "fullTree.idealPrune(65494) = "  << fullTree.idealPrune(65494) << endl;
+
    cout << "fullTree.pruneSize(100) = " << fullTree.pruneSize(100) << endl;
+   cout << "fullTree.idealPrune(39256) = "  << fullTree.idealPrune(39256) << endl;
+ 
+
+
    cout << "fullTree.pruneSize(1000) = " << fullTree.pruneSize(1000) << endl;
    cout << "fullTree.pruneSize(100000) = " << fullTree.pruneSize(100000) << endl;
 
-   // cout << "fullTree.idealPrune(1000) = "  << fullTree.idealPrune(1000) << endl;
-   // cout << "fullTree.idealPrune(10000) = " << fullTree.idealPrune(10000) << endl;
+   cout << "fullTree.idealPrune(1000) = "  << fullTree.idealPrune(1000) << endl;
+   cout << "fullTree.pruneSize(28592) = " << fullTree.pruneSize(28592) << endl;
+
+   cout << "fullTree.idealPrune(10000) = " << fullTree.idealPrune(10000) << endl;
 
 
    // Test some creation/deletion functions
@@ -72,7 +80,7 @@ int main() {
    Quadtree tinyTree(imgIn, 32);
    cout << "Printing tinyTree:\n";
    tinyTree.prune(100);
-   tinyTree.printTree();
+   // tinyTree.printTree();
    cout << "5" << endl;
    return 0;
 }
