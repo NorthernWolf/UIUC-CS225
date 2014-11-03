@@ -1,7 +1,7 @@
 Monad Autograder
-Testing lab_avl at 2014-11-03 02:05:35
+Testing lab_avl at 2014-11-03 12:36:32
 
-"There are two ways of constructing a software design. One way is to make it so simple that there are obviously no deficiencies. And the other way is to make it so complicated that there are no obvious deficiencies." ~ C.A.R. Hoare
+"I think it's hacky, but maybe it's just good." ~ Sean Massung
 
 Setting up test environment...
 Compiling...
