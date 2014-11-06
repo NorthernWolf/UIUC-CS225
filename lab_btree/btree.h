@@ -355,8 +355,26 @@ class BTree
 template <class T, class C>
 size_t insertion_idx(const std::vector< T >& elements, const C& val)
 {
-    /* TODO Your code goes here! */
-    return 5;
+
+int i = 0;//declare i because compiler says so 
+
+   for (i = 0; i < elements.size(); i++)
+   {
+        if(val == elements[i]) //if the val occurs in elements, then reutnr the index 
+        {
+            return i;
+        }
+        else if(val > elements[i]) //else return the index at which Val could be inserted
+        {
+            i++;//stay in loop until and keep incrementing i
+        }   
+        else //then when that is broken, return the index
+        {
+            return i;
+        }   
+   }
+   //wants to find the index.. so return 'i' ?
+   return i; //if val is greater than ever element, its leaves for loop and we should just return
 }
 
 #include "btree_given.cpp"

@@ -44,8 +44,22 @@ V BTree<K, V>::find(const BTreeNode* subroot, const K& key) const
      * 2, which is conveniently the same as first_larger_idx. If the subroot is
      * a leaf and we didn't find the key in it, then we have failed to find it
      * anywhere in the tree and return the default V.
-     */
-    return V();
+     */ 
+
+
+        if(first_larger_idx < subroot->elements.size() && key == subroot->elements[first_larger_idx].key)
+            return subroot->elements[first_larger_idx].value; //return the value of the element at that index
+        else if(!subroot->is_leaf)
+        {
+            return find(subroot->children[first_larger_idx], key);//else recurse down until we get to leaf nodes
+        }
+        else
+        {
+            return V();//else return default
+        }
+            
+    
+    
 }
 
 /**
@@ -164,6 +178,14 @@ void BTree<K, V>::insert(BTreeNode* subroot, const DataPair& pair)
      */
 
     size_t first_larger_idx = insertion_idx(subroot->elements, pair);
-    /* TODO Your code goes here! */
+
+    if(subroot->is_leaf && pair.key != subroot->elements[first_larger_idx].key)//first case to consider
+    {
+
+    }
+    else if(!subroot->is_leaf && pair.key!= subroot->elements[first_larger_idx].key)
+    {
+        return insert(subroot->children[first_larger_idx],pair);
+    }
 }
 
