@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp6 at 2014-11-14 01:18:17
+Testing mp6 at 2014-11-15 02:14:38
 
-"I like it because it feels like I'm drinking something special." ~ Sean Massung
+"Who dares to teach must never cease to learn." ~ J.C. Dana
 
 Setting up test environment...
 Compiling...
