@@ -67,8 +67,7 @@ bool AnagramFinder<Dict>::checkWord( const string & word, const string & test ) 
    {
        testHash[word[i]]++;
    }
-   typename Dict<char, int>::iterator word_it = wordHash.begin();
-   typename Dict<char, int>::iterator test_it = testHash.begin();
+
    for (int i = 0; i < 256 ; i++)
    {
        if(testHash[i] != wordHash[i])
