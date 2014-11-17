@@ -1,0 +1,68 @@
+Monad Autograder
+Testing lab_hash at 2014-11-17 04:49:17
+
+"For humans, honesty is a matter of degree. Engineers are always honest in matters of technology and human relationships. That's why it's a good idea to keep engineers away from customers, romantic interests, and other people who can't handle the truth." ~ Scott Adams
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testRemoveEASY . [6 pts]  - passed
+testRemoveHard . [10 pts] - passed
+testResizeOnce . [7 pts]  - FAILED: Timed out (5000ms)
+testResizeAll  . [11 pts] - FAILED: Timed out (5000ms)
+testInsertEasy . [6 pts]  - passed
+testInsertHard . [10 pts] - passed
+testAnagramsSC . [8 pts]  - FAILED: Timed out (5000ms)
+testAnagramsLP . [8 pts]  - passed
+testWordCountSC  [8 pts]  - passed
+testWordCountLP  [8 pts]  - passed
+testLogfileParse [18 pts] - FAILED: unit_tests.cpp:280: [res2 => 1302353784] != [result2 => 1302270748]
+
+
+Total score...
+================================================================
+TOTAL SCORE: 56
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+testResizeOnce [7 points]
+Result: FAILED: Timed out (5000ms)
+Took 5000ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testResizeAll [11 points]
+Result: FAILED: Timed out (5000ms)
+Took 5000ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+26
+
+----------------------------------------------------------------
+testAnagramsSC [8 points]
+Result: FAILED: Timed out (5000ms)
+Took 5000ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testLogfileParse [18 points]
+Result: FAILED: unit_tests.cpp:280: [res2 => 1302353784] != [result2 => 1302270748]
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 56
+
