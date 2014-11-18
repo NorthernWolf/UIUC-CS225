@@ -248,7 +248,7 @@ class KDTree
          void buildKDTree(int dimension, int bottom, int top);
 
          //find nearest neightbor helper
-         Point<Dim>NearestNeighbor_helper(int curDim, const Point<Dim> &query, int bottom, int top, const Point<Dim> &currentBest) const;
+         Point<Dim> NearestNeighbor_helper(int curDim, const Point<Dim> &query, int bottom, int top, const Point<Dim> &currentBest) const;
 
          //choose helper function
          void choose(int i, int bottom, int top, int curDim);
