@@ -99,18 +99,20 @@ void KDTree<Dim>::buildKDTree(int dimension, int bottom, int top)
     //call the "choose" helper function to sort of split this thing 
     choose(middle, bottom, top, dimension);
 
-    if(bottom < middle) //check lower end
-    {
-        //make recursive call
-        buildKDTree((dimension+1)%Dim, bottom, middle-1); //call this thing on the lower end
-    }
-
+    
 
     if(top > middle) //check upper end 
     {
         //make recursive call
         buildKDTree((dimension+1)%Dim, middle+1, top); //call this thing on the upper end
     }
+
+    if(bottom < middle) //check lower end
+    {
+        //make recursive call
+        buildKDTree((dimension+1)%Dim, bottom, middle-1); //call this thing on the lower end
+    }
+
     
 
 }
@@ -127,13 +129,13 @@ void KDTree<Dim>::choose(int i, int bottom, int top, int curDim)
         {
             return;//get out of here!
         }
-        else if( i <holder)
+        else if( i  > holder)
         {
-            top = holder-1; //set new bottom
+            bottom = holder+1; //set new bottom
         }
-        else // if i > holder
+        else // if i < holder
         {
-            bottom = holder+1;//set new top
+            top = holder-1;//set new top
         }
     }
 }
@@ -151,12 +153,12 @@ int KDTree<Dim>::partition(int bottom, int top, int i, int curDim)
 
     for(int j = bottom ; j < top ; j++)
     {
-        if(smallerDimVal(points[i], holder1, curDim) || points[i] == holder1)
+        if(smallerDimVal(points[j], holder1, curDim) || points[j] == holder1)
         {
             //another swap
             holder2 = points[holder3];
-            points[holder3] = points[i];
-            points[i] = holder2;
+            points[holder3] = points[j];
+            points[j] = holder2;
             holder3++;
 
         }
