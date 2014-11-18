@@ -47,9 +47,9 @@ RGBAPixel TileImage::calculateAverageColor() const
 	uint64_t g = 0;
 	uint64_t b = 0;
 
-	for (int y = 0; y < image.height(); y++)
+	for (size_t y = 0; y < image.height(); y++) //changed iterator from int to size_t
 	{
-		for (int x = 0; x < image.width(); x++)
+		for (size_t x = 0; x < image.width(); x++) //changed iterator from int to size_t
 		{
 			r += image(x, y)->red;
 			g += image(x, y)->green;
