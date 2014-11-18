@@ -240,6 +240,22 @@ class KDTree
         /**
          * @todo Add your helper functions here.
          */
+
+         //distance helper
+         int distance(const Point<Dim> &first, const Point<Dim> &second) const;
+
+         //build tree helper
+         void buildKDTree(int dimension, int bottom, int top);
+
+         //find nearest neightbor helper
+         Point<Dim>NearestNeighbor_helper(int curDim, const Point<Dim> &query, int bottom, int top, const Point<Dim> &currentBest) const;
+
+         //choose helper function
+         void choose(int i, int bottom, int top, int curDim);
+
+         //partition helper functionS
+         int partition(int bottom, int top, int i, int curDim);
+
 };
 
 #include "kdtree.cpp"
