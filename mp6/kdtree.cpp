@@ -202,7 +202,7 @@ Point<Dim> KDTree<Dim>::NearestNeighbor_helper(int curDim, const Point<Dim> &que
     {
         //this means were at a leaf
         //we need to check if were wcloser than current best and return the appropriate currnent best
-        if(shouldReplace(query, currentBest, points[bottom]) == true)
+        if(shouldReplace(query, currentBest, points[bottom])==true)
         {
             retVal = points[bottom];//set the return value
             return retVal; //send that thing up!
@@ -224,7 +224,7 @@ Point<Dim> KDTree<Dim>::NearestNeighbor_helper(int curDim, const Point<Dim> &que
         retVal = NearestNeighbor_helper((curDim+1)%Dim, query, middle+1, top, currentBest);
         target = false;
     }
-    if (smallerDimVal(points[middle], query, curDim) && bottom <middle)
+    if (smallerDimVal(query, points[middle], curDim) && bottom <middle)
     {
         //recursive call to set retVal
         retVal = NearestNeighbor_helper((curDim+1)%Dim, query, bottom, middle-1, currentBest);
@@ -242,15 +242,19 @@ Point<Dim> KDTree<Dim>::NearestNeighbor_helper(int curDim, const Point<Dim> &que
     Point <Dim> holder = points[middle];
     if(pow(holder[curDim] - query[curDim], 2) <= distance(query, retVal))
     {
+
+        if(!target && bottom < middle)
+        {
+             retVal = NearestNeighbor_helper((curDim+1)%Dim, query, bottom, middle-1, retVal);//same as above but replace currentBest with retVal!
+        }
+
+
         if(target && top > middle)
         {   
             //recurisve call
             retVal = NearestNeighbor_helper((curDim+1)%Dim, query, middle+1, top, retVal);//same as above but replace currentBest with retVal!
         }
-        if (target && bottom < middle)
-        {
-             retVal = NearestNeighbor_helper((curDim+1)%Dim, query, bottom, middle-1, retVal);//same as above but replace currentBest with retVal!
-        }
+       
 
     }
 
