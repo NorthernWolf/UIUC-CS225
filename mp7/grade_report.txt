@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp7 at 2014-12-04 02:28:50
+Testing mp7 at 2014-12-05 13:09:32
 
-"And I'm sitting there hallucinating a bird on my pillow from the benadryl and I think to myself ... 'I need to write a poem about Makefiles'." ~ Lisa Sproat
+"The most exciting phrase to hear in science - the one that heralds new discoveries - is not 'Eureka!' but 'That's funny....'" ~ Isaac Asimov
 
 Setting up test environment...
 Error: /dev/shm/225/cs225_checkout/sofroni2/mp7/maze.h does not exist.
