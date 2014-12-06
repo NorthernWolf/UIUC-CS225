@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp7 at 2014-12-05 13:09:32
+Testing mp7 at 2014-12-06 01:28:15
 
-"The most exciting phrase to hear in science - the one that heralds new discoveries - is not 'Eureka!' but 'That's funny....'" ~ Isaac Asimov
+"The sooner you start to code, the longer the program will take." ~ R. Carlson
 
 Setting up test environment...
 Error: /dev/shm/225/cs225_checkout/sofroni2/mp7/maze.h does not exist.
