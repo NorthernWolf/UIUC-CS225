@@ -1,7 +1,9 @@
+svn: Working copy '/dev/shm/225/cs225_current_checkout' locked
+svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp7 at 2014-12-07 01:28:31
+Testing mp7 at 2014-12-08 01:35:52
 
-"If you have a procedure with ten parameters, you probably missed some." ~ Alan J. Perlis
+"If at first you don't succeed, that's one data point." ~ Randall Munroe
 
 Setting up test environment...
 Error: /dev/shm/225/cs225_checkout/sofroni2/mp7/maze.h does not exist.
