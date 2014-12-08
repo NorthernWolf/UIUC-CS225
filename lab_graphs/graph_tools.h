@@ -43,6 +43,9 @@ namespace GraphTools
 
     // define any helper functions here:
 
+    //find min weight helper function //lots of parameters not sure if necesary
+    void find_minWeight_helper(Graph & graph, queue<Vertex> & verticies , queue<Vertex> & first, queue<Vertex> second, Vertex &start, queue<int> &weight);
+
 }
 
 #endif
