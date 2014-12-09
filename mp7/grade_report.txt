@@ -1,9 +1,41 @@
-svn: Working copy '/dev/shm/225/cs225_current_checkout' locked
-svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
+Grading revision r59516 by sofroni2, dated 2014-12-08 20:10:52.000245395 -0600 CST
 Monad Autograder
-Testing mp7 at 2014-12-08 01:35:52
+Testing mp7 at 2014-12-09 13:14:44
 
-"If at first you don't succeed, that's one data point." ~ Randall Munroe
+"The cheating sheet is key to success in CS 412 course." ~ CS 412 TA
 
 Setting up test environment...
-Error: /dev/shm/225/cs225_checkout/sofroni2/mp7/maze.h does not exist.
+Compiling...
+================================================================
+maze.cpp:15:1: error: unknown type name 'DisjointSet'; did you mean 'DisjointSets'?
+DisjointSet myMaze;//declaring a disjoint set so I can use find and setunion as directed by video to prevent it from cycling
+^~~~~~~~~~~
+DisjointSets
+./dsets.h:15:7: note: 'DisjointSets' declared here
+class DisjointSets
+      ^
+maze.cpp:41:9: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+        if(dir = 0)
+           ~~~~^~~
+maze.cpp:41:9: note: place parentheses around the assignment to silence this warning
+        if(dir = 0)
+               ^
+           (      )
+maze.cpp:41:9: note: use '==' to turn this assignment into an equality comparison
+        if(dir = 0)
+               ^
+               ==
+1 warning and 1 error generated.
+make: *** [maze.o] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
