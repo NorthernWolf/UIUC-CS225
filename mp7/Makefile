@@ -10,7 +10,7 @@ OBJS_SQUAREMAZE_PROVIDED = testsquaremaze.o rgbapixel.o png.o
 
 CXX = clang++
 LD = clang++
-WARNINGS = -Wall -Werror -Wfatal-errors -Wextra -pedantic
+WARNINGS = -Wall  -Wfatal-errors -Wextra -pedantic
 CXXFLAGS = -std=c++1y -stdlib=libc++ -c -g -O0 $(WARNINGS) -MMD -MP
 LDFLAGS = -std=c++1y -stdlib=libc++ -lpng -lc++abi
 ASANFLAGS = -fsanitize=address -fno-omit-frame-pointer
