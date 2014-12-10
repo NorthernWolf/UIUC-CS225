@@ -6,7 +6,7 @@ using namespace std;
 void DisjointSets::addelements(int num)
 {
 	//get the original size, calculate new size, resize s
-
+/*
 
 	//first lets get the original size
 	unsigned long int orig_size = s.size();
@@ -22,6 +22,14 @@ void DisjointSets::addelements(int num)
 		orig_size++;//maybe orig_size isn't a good name for this..
 		//eh 
 	}
+	*/
+	//WAY simpler implemenetation
+	//push back -1 on our vector s becasue roots are -1 and thats it
+	for(int i =0; i<num;i++)
+	{
+		s.push_back(-1);
+	}
+
 }
 
 
