@@ -1,0 +1,153 @@
+Monad Autograder
+Testing mp7 at 2014-12-10 03:16:59
+
+"Even if by chance this world should end tomorrow, if it's together with you, would 'I'm okay with that too' be the cool attitude you'd take?" ~ Makino Yui
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+addElements1  . . . . . . [5 pts] - passed
+addElements2  . . . . . . [5 pts] - passed
+testFindAndSetUnion1  . . [5 pts] - passed
+testFindAndSetUnion2  . . [5 pts] - passed
+testFindAndSetUnion3  . . [5 pts] - passed
+testMakeSmallMaze . . . . [5 pts] - FAILED: Segmentation fault
+testMakeMazeConnected . . [5 pts] - FAILED: Segmentation fault
+testMakeMazeAcyclic . . . [5 pts] - FAILED: Segmentation fault
+testMakeMazeTree1000  . . [5 pts] - FAILED: Segmentation fault
+testMakeMazeRandom  . . . [5 pts] - FAILED: Segmentation fault
+testSolveMazeValidPath  . [5 pts] - FAILED: Segmentation fault
+testSolutionBottomRow . . [5 pts] - FAILED: Segmentation fault
+testSolutionCorrectSquare [5 pts] - FAILED: Segmentation fault
+testSolveMazeSmall  . . . [5 pts] - FAILED: Segmentation fault
+testSolveMazeLarge  . . . [5 pts] - FAILED: Segmentation fault
+testDrawMazeSmall . . . . [5 pts] - FAILED: Segmentation fault
+testDrawMazeMed . . . . . [5 pts] - FAILED: Segmentation fault
+testDrawMazeLarge . . . . [5 pts] - FAILED: Segmentation fault
+testDrawSolutionMed . . . [5 pts] - FAILED: Segmentation fault
+testDrawSolutionLarge . . [5 pts] - FAILED: Segmentation fault
+
+
+Total score...
+================================================================
+TOTAL SCORE: 25
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+testMakeSmallMaze [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testMakeMazeConnected [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testMakeMazeAcyclic [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testMakeMazeTree1000 [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (15000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testMakeMazeRandom [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (10000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSolveMazeValidPath [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSolutionBottomRow [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSolutionCorrectSquare [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSolveMazeSmall [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testSolveMazeLarge [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (15000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testDrawMazeSmall [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (5000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testDrawMazeMed [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (10000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testDrawMazeLarge [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (15000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testDrawSolutionMed [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (10000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testDrawSolutionLarge [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (15000ms timeout)
+Output:
+----------------------------------------------------------------
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 25
+
